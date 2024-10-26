@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Gilda+Display&display=swap');
+
+
+/* Set a default font family for the body */
+body {
+  font-family: 'Barlow', sans-serif;
+   overflow-x: hidden;
+    
+}
+
+/* If you need Gilda Display for specific sections, you can create a utility class */
+.font-gilda {
+  font-family: 'Gilda Display', serif;
+}
