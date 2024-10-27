@@ -13,15 +13,39 @@ const DealProductCard = ({ product }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="overflow-hidden relative">
+        {/* Product Image */}
         <img
           src={isHovered ? product.hoverImageUrl : product.imageUrl}
           alt={`${product.name} image`}
           className="w-full h-[334px] transform transition-transform duration-[350ms] ease-linear hover:scale-105 cursor-pointer"
         />
+
+        {/* Discount Label */}
         <p className="absolute rounded-[6px] font-barlow font-semibold text-[13px] py-[5px] px-[8px] top-5 left-5 w-[49px] h-[24px] bg-[#aa8453] text-white text-center flex items-center justify-center">
           {product.discount}
         </p>
+
+        {/* Hovered Icons */}
+        {isHovered && (
+          <div className="absolute top-5 right-5 flex gap-2">
+            {/* Star Icon */}
+            <button className="p-1 bg-white rounded-full shadow-md">
+              <FaStar className="text-[#f9bf00]" />
+            </button>
+
+            {/* Quick Add Button */}
+            <button className="p-1 bg-white rounded-full shadow-md">
+              <img
+                src="/path/to/quick-add-icon.svg"
+                alt="Quick Add"
+                className="w-5 h-5"
+              />
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Product Info */}
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h3 className="text-[14px] font-barlow text-[#000000]">
