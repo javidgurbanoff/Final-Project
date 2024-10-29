@@ -25,7 +25,7 @@ const Header = () => {
       />
 
       <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pt-16 text-white">
-        <span className="font-gilda font-normal text-[45px] text-shadow-lg">
+        <span className="font-gilda font-extralight text-[47px] text-shadow-lg">
           DESIGN YOUR HOME
         </span>
         <br />
@@ -36,6 +36,7 @@ const Header = () => {
           DISCOVER NOW
         </a>
       </div>
+
       <div className="absolute top-8 left-4 right-4 flex justify-between items-center pl-[159px] pr-[175px]">
         <a href="/">
           <img
@@ -44,6 +45,7 @@ const Header = () => {
             className="cursor-pointer"
           />
         </a>
+
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
           <a
             className="text-[#aa8453] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
@@ -51,22 +53,110 @@ const Header = () => {
           >
             HOME
           </a>
-          <a
-            className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            COLLECTION
-          </a>
-          <a
-            className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            PRODUCTS
-          </a>
-          <span className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
-            OTHER PAGES
-          </span>
+
+          <div className="relative group">
+            <a
+              className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
+              href="#"
+            >
+              COLLECTION
+            </a>
+            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+              <div className="py-1">
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Collection 1
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Collection 2
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <a
+              className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
+              href="#"
+            >
+              PRODUCTS
+            </a>
+            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+              <div className="py-1">
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Product 1
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Product 2
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <span className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
+              OTHER PAGES
+            </span>
+            <div className="hidden group-hover:block absolute left-0 mt-8 w-48  shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+              <div className="py-1">
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  404 Error
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  About Us
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Contact Us
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  FAQs Page
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Store Direction Page
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Store Locations Page
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Testimonials Page
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="flex space-x-1 text-white items-center gap-7">
           <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
           <a href="#" onClick={toggleSidebar}>
@@ -106,10 +196,10 @@ const Header = () => {
       <div
         className={`fixed top-0 right-0 w-[370px] h-full bg-[#ffffff] text-[#6b7280] transform ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-700	 ease-in-out z-50`}
+        } transition-transform duration-700 ease-in-out z-50`}
       >
-        <div className="">
-          <ul className="space-y-9 px-[40px] py-[100px] text-[18px] text-left">
+        <div className="space-y-9 px-[40px] py-[100px] text-[18px] text-left">
+          <ul>
             <li>
               <a href="/login" className="hover:text-[#aa8453] transition-all">
                 Login
@@ -140,12 +230,12 @@ const Header = () => {
               </a>
             </li>
             <li className="pt-[30px] text-[14px] font-gilda">
-              <span className="">CURRENCY</span>
-              <div className="text-[11px] font-barlow"> USD</div>
+              <span>CURRENCY</span>
+              <div className="text-[11px] font-barlow">USD</div>
             </li>
-            <li className=" text-[14px] font-gilda">
+            <li className="text-[14px] font-gilda">
               <span>LANGUAGE</span>
-              <div className=" text-[11px] font-barlow">ENGLISH</div>
+              <div className="text-[11px] font-barlow">ENGLISH</div>
             </li>
           </ul>
         </div>
