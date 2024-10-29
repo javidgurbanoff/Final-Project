@@ -3,7 +3,6 @@ import React from "react";
 const InteriorDesign = () => {
   return (
     <div className="w-full h-auto flex flex-col lg:flex-row mb-12">
-      {/* Text Section */}
       <div className="w-full lg:w-[760px] h-[514px] bg-[#1b1b1b] text-white flex justify-center items-center">
         <div className="w-[90%] lg:w-[635px] h-auto lg:h-[259px] p-[15px]">
           <h5 className="text-[32px] lg:text-[40px] text-left pb-1 pl-2 font-gilda mb-6">
@@ -24,8 +23,6 @@ const InteriorDesign = () => {
           </a>
         </div>
       </div>
-
-      {/* Image Section */}
       <div
         className="w-full lg:w-[760px] h-[514px] bg-cover bg-center "
         style={{

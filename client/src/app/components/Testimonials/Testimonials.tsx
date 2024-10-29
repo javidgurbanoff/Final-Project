@@ -14,8 +14,6 @@ const Testimonials = () => {
       <h2 className="text-center text-[46px] font-gilda text-[#222222]">
         Testimonials
       </h2>
-
-      {/* Testimonial Content */}
       <div className="flex space-x-6 mt-10">
         {[...Array(3)].map((_, index) => (
           <div

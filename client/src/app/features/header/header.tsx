@@ -6,29 +6,24 @@ import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Header = () => {
-  // State to manage sidebar visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Toggle sidebar visibility
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Close sidebar when background overlay is clicked
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
 
   return (
     <div className="relative text-center">
-      {/* Background Image */}
       <img
         src="https://vinova-furstore.myshopify.com/cdn/shop/files/s-4-1_2048x.jpg?v=1697014370"
         alt="background"
         className="pb-[30px]"
       />
 
-      {/* Header Content */}
       <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pt-16 text-white">
         <span className="font-gilda font-normal text-[45px] text-shadow-lg">
           DESIGN YOUR HOME
@@ -41,10 +36,7 @@ const Header = () => {
           DISCOVER NOW
         </a>
       </div>
-
-      {/* Navigation Bar */}
       <div className="absolute top-8 left-4 right-4 flex justify-between items-center pl-[159px] pr-[175px]">
-        {/* Logo */}
         <a href="/">
           <img
             src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
@@ -52,7 +44,6 @@ const Header = () => {
             className="cursor-pointer"
           />
         </a>
-        {/* Links */}
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
           <a
             className="text-[#aa8453] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
@@ -76,8 +67,6 @@ const Header = () => {
             OTHER PAGES
           </span>
         </div>
-
-        {/* Icons with Badges */}
         <div className="flex space-x-1 text-white items-center gap-7">
           <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
           <a href="#" onClick={toggleSidebar}>
@@ -98,7 +87,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Blog Link */}
       <div className="absolute top-[120px] left-1/2 transform -translate-x-1/2 text-white">
         <a
           href="#"
@@ -108,7 +96,6 @@ const Header = () => {
         </a>
       </div>
 
-      {/* Overlay - background, visible when sidebar is open */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"
@@ -116,7 +103,6 @@ const Header = () => {
         ></div>
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed top-0 right-0 w-[370px] h-full bg-[#ffffff] text-[#6b7280] transform ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"

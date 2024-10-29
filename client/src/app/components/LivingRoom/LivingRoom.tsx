@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 
 const LivingRoom = () => {
-  // State to store featured products
   const [featureds, setFeatureds] = useState([]);
 
-  // Fetch data from the backend
   const getFeatureds = () => {
     fetch("")
       .then((res) => res.json())
@@ -13,14 +11,12 @@ const LivingRoom = () => {
       .catch((err) => console.error("Error fetching featureds:", err));
   };
 
-  // Fetch data when the component mounts
   useEffect(() => {
     getFeatureds();
   }, []);
 
   return (
     <div className="w-full h-[397px] flex justify-center pt-[30px] ">
-      {/* Left section (Living Room image and menu) */}
       <div className="flex w-[499px] h-[353px] relative">
         <div className="w-[206px] h-[353px] bg-[#1b1b1b] flex flex-col justify-center items-start p-4">
           <h1 className="text-[24px] font-gilda text-[#ffffff]">LIVING ROOM</h1>
@@ -40,7 +36,6 @@ const LivingRoom = () => {
         />
       </div>
 
-      {/* Right section (dynamically loaded product images) */}
       <div className="w-[700px] h-[397px] flex justify-center items-center">
         <div className="flex">
           {featureds.length > 0 ? (

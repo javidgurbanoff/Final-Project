@@ -1,15 +1,14 @@
 import React from "react";
-import Footer from "../features/footer/footer"; // Import Footer
-import { IoHomeOutline } from "react-icons/io5"; // Import Home Icon
-import { FaSearch } from "react-icons/fa"; // Import Search Icon
-import { GoPerson } from "react-icons/go"; // Import Person Icon
-import { IoIosStarOutline } from "react-icons/io"; // Import Star Icon
-import { MdOutlineShoppingCart } from "react-icons/md"; // Import Cart Icon
+import Footer from "../features/footer/footer"; 
+import { IoHomeOutline } from "react-icons/io5"; 
+import { FaSearch } from "react-icons/fa"; 
+import { GoPerson } from "react-icons/go";
+import { IoIosStarOutline } from "react-icons/io"; 
+import { MdOutlineShoppingCart } from "react-icons/md"; 
 
 export default function Register() {
   return (
     <div>
-      {/* Header with navigation and icons */}
       <div className="absolute w-full h-[108px]  flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
         <img
           src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
@@ -40,7 +39,6 @@ export default function Register() {
           </span>
         </div>
 
-        {/* Icons with badges */}
         <div className="flex space-x-1 text-white items-center gap-7">
           <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
           <a href="/register">
@@ -63,11 +61,9 @@ export default function Register() {
         </div>
       </div>
 
-      {/* Registration Form */}
       <div className="text-center pt-[90px] w-full h-[656px] pb-[30px]">
         <h1 className="text-[30px] text-[#222] font-gilda">CREATE ACCOUNT</h1>
 
-        {/* Breadcrumb */}
         <div className="flex justify-center items-center space-x-2 mt-4 text-[#222]">
           <a href="/">
             <IoHomeOutline className="w-6 h-6" />
@@ -75,7 +71,6 @@ export default function Register() {
           <span>Home &gt; Create Account</span>
         </div>
 
-        {/* Form Section */}
         <div className="flex flex-col items-center mt-6 space-y-4">
           <input
             placeholder="FIRST NAME"
@@ -103,13 +98,11 @@ export default function Register() {
             <span>Sign up for our newsletter</span>
           </div>
 
-          {/* Submit Button */}
           <button className="bg-[#aa8453] w-[570px] h-[50px] text-white px-6 py-2 rounded hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all">
             Register
           </button>
         </div>
 
-        {/* Already have an account */}
         <div className="mt-4">
           <span className="text-sm text-gray-500">
             If you have an account, please{" "}
@@ -119,8 +112,6 @@ export default function Register() {
           </span>
         </div>
       </div>
-
-      {/* Footer Section */}
       <Footer />
     </div>
   );
