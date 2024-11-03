@@ -24,10 +24,12 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <img
-          src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
-          alt="logo"
-        />
+        <a href="/">
+          <img
+            src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
+            alt="logo"
+          />
+        </a>
 
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
           <a

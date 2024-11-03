@@ -21,7 +21,7 @@ const Testimonials = () => {
             className="flex flex-col items-center w-[370px] h-[390px] text-center "
           >
             <img
-              src="https://vinova-furstore.myshopify.com/cdn/shop/files/a-2-1_380x380_crop_center.png?v=1696405374"
+              src="https://vinova-furstore.myshopify.com/cdn/shop/files/a-2-2_380x380_crop_center.png?v=1696405374"
               alt="Kwang Sang"
               className="mb-4 w-[120px] h-[120px] object-cover rounded-full"
             />
