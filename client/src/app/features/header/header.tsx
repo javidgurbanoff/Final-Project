@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
 import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import BackToTopButton from "@/app/components/BackToTopButton/BackToTopButton";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -18,6 +19,7 @@ const Header = () => {
 
   return (
     <div className="relative text-center">
+      <BackToTopButton />
       <img
         src="https://vinova-furstore.myshopify.com/cdn/shop/files/s-4-1_2048x.jpg?v=1697014370"
         alt="background"
@@ -61,7 +63,7 @@ const Header = () => {
             >
               COLLECTION
             </a>
-            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+            <div className="hidden w-full group-hover:block absolute left-0 mt-2  rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
               <div className="py-1">
                 <a
                   href="#"
@@ -108,7 +110,7 @@ const Header = () => {
             <span className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
               OTHER PAGES
             </span>
-            <div className="hidden group-hover:block absolute left-0 mt-8 w-48  shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
               <div className="py-1">
                 <a
                   href="#"
@@ -123,13 +125,13 @@ const Header = () => {
                   About Us
                 </a>
                 <a
-                  href="#"
+                  href="/contact"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Contact Us
                 </a>
                 <a
-                  href="#"
+                  href="/faq"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   FAQs Page

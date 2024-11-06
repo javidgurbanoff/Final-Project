@@ -18,8 +18,10 @@ const LivingRoom = () => {
   return (
     <div className="w-full h-[397px] flex justify-center ">
       <div className="flex w-[499px] h-[353px] relative">
-        <div className="w-[206px] h-[353px] bg-[#1b1b1b] p-[30px] flex flex-col justify-center items-start">
-          <h1 className="text-[24px] font-gilda text-[#ffffff]">BEDROOM</h1>
+        <div className="w-[206px] h-[324px] bg-[#1b1b1b] p-[30px] flex flex-col justify-center items-start">
+          <h1 className="text-[24px] font-gilda text-[#ffffff] border-b-2 border-[#aa8453]">
+            BEDROOM
+          </h1>
           <ul className="mt-4 pl-[15px] text-[#ffffff] text-[16px] leading-8 ">
             <li className="hover:text-[#aa8453] transition-all duration-300 cursor-pointer">
               Table Lamp

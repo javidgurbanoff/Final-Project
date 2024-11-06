@@ -19,7 +19,7 @@ const InteriorDesign = () => {
             href="#"
             className="text-[#aa8453] text-[18px] lg:text-[20px] pl-2 font-barlow underline hover:text-[#ffffff] transition-all duration-300"
           >
-            Discover now
+            Discovery now
           </a>
         </div>
       </div>

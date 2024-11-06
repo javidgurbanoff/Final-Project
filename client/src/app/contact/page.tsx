@@ -9,7 +9,7 @@ import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 
-export default function Faq() {
+export default function Contact() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -81,46 +81,16 @@ export default function Faq() {
 
       <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
         <div className=" pb-[90px]">
-          <h1 className="text-[30px] text-[#222] font-gilda">
-            FREQUENTLY ASKED QUESTIONS
-          </h1>
+          <h1 className="text-[30px] text-[#222] font-gilda">CONTACT</h1>
 
           <div className="flex justify-center items-center space-x-2 mt-4 text-[#222]">
             <a href="/">
               <IoHomeOutline className="w-3 h-3" />
             </a>
             <span className="flex justify-center text-[11px] items-center">
-              Home <GoDotFill className="text-center mx-2 w-2 h-2" /> Frequently
-              Asked Questions
+              Home <GoDotFill className="text-center mx-2 w-2 h-2" /> Contact
             </span>
           </div>
-        </div>
-        <div className="flex ">
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/757-delivery-flat_140x.gif?v=1695610093"
-            alt=""
-            className="pt-[22px] pb-[22px] pl-[10px] pr-[10px]"
-          />
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/299-coins-dollar-flat_140x.gif?v=1695610092"
-            alt=""
-            className="pt-[22px] pb-[22px] pl-[10px] pr-[10px]"
-          />
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/1708-home-safety-flat_140x.gif?v=1695610092"
-            alt=""
-            className="pt-[22px] pb-[22px] pl-[10px] pr-[10px]"
-          />
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/1413-page-size-flat_140x.gif?v=1695610092"
-            alt=""
-            className="pt-[22px] pb-[22px] pl-[10px] pr-[10px]"
-          />
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/455-credit-card-bank-flat_140x.gif?v=1695610092"
-            alt=""
-            className="pt-[22px] pb-[22px] pl-[10px] pr-[10px]"
-          />
         </div>
       </div>
 
