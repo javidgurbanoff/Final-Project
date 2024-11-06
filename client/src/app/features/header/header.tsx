@@ -117,7 +117,7 @@ const Header = () => {
                   404 Error
                 </a>
                 <a
-                  href="#"
+                  href="/about"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   About Us
@@ -198,8 +198,8 @@ const Header = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-700 ease-in-out z-50`}
       >
-        <div className="space-y-9 px-[40px] py-[100px] text-[18px] text-left">
-          <ul>
+        <div className="px-[40px] py-[100px] text-[18px] text-left">
+          <ul className="space-y-9 text-[#222222] font-barlow ">
             <li>
               <a href="/login" className="hover:text-[#aa8453] transition-all">
                 Login
