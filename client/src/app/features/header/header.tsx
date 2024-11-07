@@ -17,6 +17,42 @@ const Header = () => {
     setIsSidebarOpen(false);
   };
 
+  const NavbarItems = [
+    {
+      name: "HOME",
+      link: "#",
+    },
+    {
+      name: "COLLECTION",
+      link: "#",
+      subItems: [
+        { name: "Collection 1", link: "#" },
+        { name: "Collection 2", link: "#" },
+      ],
+    },
+    {
+      name: "PRODUCTS",
+      link: "#",
+      subItems: [
+        { name: "Product 1", link: "#" },
+        { name: "Product 2", link: "#" },
+      ],
+    },
+    {
+      name: "OTHER PAGES",
+      link: "#",
+      subItems: [
+        { name: "404 Error", link: "#" },
+        { name: "About Us", link: "/about" },
+        { name: "Contact Us", link: "/contact" },
+        { name: "FAQs Page", link: "/faq" },
+        { name: "Store Direction Page", link: "#" },
+        { name: "Store Locations Page", link: "#" },
+        { name: "Testimonials Page", link: "#" },
+      ],
+    },
+  ];
+
   return (
     <div className="relative text-center">
       <BackToTopButton />
@@ -49,114 +85,31 @@ const Header = () => {
         </a>
 
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          <a
-            className="text-[#aa8453] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            HOME
-          </a>
-
-          <div className="relative group">
-            <a
-              className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-              href="#"
-            >
-              COLLECTION
-            </a>
-            <div className="hidden w-full group-hover:block absolute left-0 mt-2  rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <div className="py-1">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Collection 1
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Collection 2
-                </a>
-              </div>
+          {NavbarItems.map((item, index) => (
+            <div key={index} className="relative group">
+              <a
+                href={item.link}
+                className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
+              >
+                {item.name}
+              </a>
+              {item.subItems && (
+                <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                  <div className="py-1">
+                    {item.subItems.map((subItem, subIndex) => (
+                      <a
+                        key={subIndex}
+                        href={subItem.link}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-
-          <div className="relative group">
-            <a
-              className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-              href="#"
-            >
-              PRODUCTS
-            </a>
-            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <div className="py-1">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Product 1
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Product 2
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative group">
-            <span className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
-              OTHER PAGES
-            </span>
-            <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <div className="py-1">
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  404 Error
-                </a>
-                <a
-                  href="/about"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  About Us
-                </a>
-                <a
-                  href="/contact"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Contact Us
-                </a>
-                <a
-                  href="/faq"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  FAQs Page
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Store Direction Page
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Store Locations Page
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Testimonials Page
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="flex space-x-1 text-white items-center gap-7">
