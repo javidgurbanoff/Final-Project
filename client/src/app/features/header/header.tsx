@@ -1,13 +1,17 @@
 "use client";
+
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
 import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import BackToTopButton from "@/app/components/BackToTopButton/BackToTopButton";
+import SearchBar from "@/app/components/SearchBar/SearchBar";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -15,6 +19,14 @@ const Header = () => {
 
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+  };
+
+  const toggleSearchBar = () => {
+    setIsSearchBarOpen(!isSearchBarOpen);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const NavbarItems = [
@@ -94,7 +106,7 @@ const Header = () => {
                 {item.name}
               </a>
               {item.subItems && (
-                <div className="hidden group-hover:block absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                <div className="hidden group-hover:block absolute left-0 mt-12 text-left w-[270px] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
                   <div className="py-1">
                     {item.subItems.map((subItem, subIndex) => (
                       <a
@@ -113,7 +125,10 @@ const Header = () => {
         </div>
 
         <div className="flex space-x-1 text-white items-center gap-7">
-          <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
+          <FaSearch
+            className="transition-all cursor-pointer w-[19px] h-[19px]"
+            onClick={toggleSearchBar}
+          />
           <a href="#" onClick={toggleSidebar}>
             <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
           </a>
@@ -132,19 +147,38 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="absolute top-[120px] left-1/2 transform -translate-x-1/2 text-white">
-        <a
-          href="#"
-          className="text-[16px] mt-7 inline-block hover:text-[#aa8453] transition-all duration-300 font-barlow"
-        >
-          BLOG
-        </a>
+      <div
+        className={`absolute top-0 left-0 right-0 z-50 transition-transform duration-500 ${
+          isSearchBarOpen
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0"
+        } flex justify-center items-center bg-white py-5 shadow-md`}
+      >
+        <div className="flex items-center border border-gray-300 rounded-md w-full max-w-4xl overflow-hidden">
+          <FaSearch className="ml-3 text-gray-400" />
+          <input
+            type="text"
+            className="p-3 w-full h-[50px] outline-none"
+            placeholder="Enter your keywords"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <button className="px-5 py-3 text-[12px] text-black rounded-md ">
+            SEARCH
+          </button>
+        </div>
       </div>
 
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"
           onClick={closeSidebar}
+        ></div>
+      )}
+      {isSearchBarOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-40"
+          onClick={toggleSearchBar}
         ></div>
       )}
 
@@ -154,7 +188,7 @@ const Header = () => {
         } transition-transform duration-700 ease-in-out z-50`}
       >
         <div className="px-[40px] py-[100px] text-[18px] text-left">
-          <ul className="space-y-9 text-[#222222] font-barlow ">
+          <ul className="space-y-9 text-[#222222] font-barlow">
             <li>
               <a href="/login" className="hover:text-[#aa8453] transition-all">
                 Login
