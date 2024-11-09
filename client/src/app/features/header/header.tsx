@@ -85,7 +85,7 @@ const Header = () => {
           href="#"
           className="text-[14px] mb-3 inline-block font-barlow underline underline-offset-2 hover:text-[#aa8453] transition-all duration-300"
         >
-          DISCOVER NOW
+          DISCOVERY NOW
         </a>
       </div>
 
