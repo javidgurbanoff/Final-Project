@@ -7,6 +7,7 @@ import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import BackToTopButton from "@/app/components/BackToTopButton/BackToTopButton";
 import SearchBar from "@/app/components/SearchBar/SearchBar";
+import CookieConsent from "@/app/components/CookieConsent/CookieConsent";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -68,6 +69,7 @@ const Header = () => {
   return (
     <div className="relative text-center">
       <BackToTopButton />
+      <CookieConsent />
       <img
         src="https://vinova-furstore.myshopify.com/cdn/shop/files/s-4-1_2048x.jpg?v=1697014370"
         alt="background"
