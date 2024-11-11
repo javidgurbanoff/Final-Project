@@ -83,36 +83,32 @@ export default function Register() {
         <div className=" pb-[90px]">
           <h1 className="text-[30px] text-[#222] font-gilda">CREATE ACCOUNT</h1>
 
-          <div className="flex justify-center items-center space-x-2 mt-4 text-[#222]">
+          <div className="flex justify-center items-center space-x-2 mt-4 text-[13px] text-[#222]">
             <a href="/">
               <IoHomeOutline className="w-3 h-3" />
             </a>
             <span className="flex justify-center items-center">
-              Home <GoDotFill className="text-center mx-2 w-2 h-2" /> Account
+              Home <GoDotFill className="text-center mx-2 w-2 h-2" />
+              Create Account
             </span>
           </div>
         </div>
 
-        <div className="w-[600px] h-[400px] flex flex-col space-y-4">
-          <h4 className="text-[#202020] text-left font-barlow font-extrabold text-[23px]">
-            SIGN IN
-          </h4>
-          <p className="text-[14px] text-left mb-[15px]">
-            Insert your account information:
-          </p>
+        <div className="w-[600px] h-[400px] flex flex-col pb-4 space-y-4">
           <input
             placeholder="FIRST NAME"
-            type="email"
-            className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec]  rounded hover:border-[#aa8453] "
+            type="name"
+            className="w-[570px] text-[12px] h-[50px] p-5 border border-[#ececec] focus:border-[#aa8453] rounded hover:border-[#aa8453]"
           />
+
           <input
             placeholder="LAST NAME"
-            type="password"
+            type="last name"
             className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
           />
           <input
             placeholder="EMAIL"
-            type="password"
+            type="email"
             className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
           />
           <input
@@ -120,7 +116,7 @@ export default function Register() {
             type="password"
             className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
           />
-          <div className="flex text-left">
+          <div className="flex gap-1 text-left">
             <input type="checkbox" name="" id="" />
             <span className="text-[12px] font-barlow">
               Sign Up for our mewsletter
@@ -128,7 +124,7 @@ export default function Register() {
           </div>
           <div className="flex items-center space-x-2 text-[12px] font-barlow">
             <span className="pl-1">If you don't have an account, please</span>
-            <a href="/register">
+            <a href="/login">
               <span className="text-[#6aa1da] hover:text-[#aa8453]">
                 Login Here
               </span>
@@ -136,7 +132,7 @@ export default function Register() {
           </div>
 
           <button className="bg-[#aa8453] w-[570px] h-[50px] text-white px-6 py-2 rounded hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all">
-            Login
+            Register
           </button>
         </div>
       </div>

@@ -34,7 +34,7 @@ const BackToTopButton = () => {
                 }`}
       aria-label="Back to top"
     >
-      <IoIosArrowUp className="items-center" />
+      <IoIosArrowUp className="items-center justify-center" />
     </button>
   );
 };

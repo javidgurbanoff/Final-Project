@@ -23,13 +23,15 @@ const InteriorDesign = () => {
           </a>
         </div>
       </div>
-      <div
-        className="w-full lg:w-[760px] h-[514px] bg-cover bg-center "
-        style={{
-          backgroundImage:
-            "url('https://vinova-furstore.myshopify.com/cdn/shop/files/img-4-8_900x.png?v=1696904103')",
-        }}
-      ></div>
+      <div className="w-full lg:w-[760px] h-[514px] overflow-hidden">
+        <div
+          className="w-full h-full bg-cover bg-center transition-transform duration-[3000ms] ease-in-out transform hover:scale-110"
+          style={{
+            backgroundImage:
+              "url('https://vinova-furstore.myshopify.com/cdn/shop/files/img-4-8_900x.png?v=1696904103')",
+          }}
+        ></div>
+      </div>
     </div>
   );
 };
