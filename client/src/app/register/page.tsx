@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
@@ -8,9 +7,67 @@ import { GoPerson } from "react-icons/go";
 import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Register() {
+  const [form, setForm] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+  });
+  const [pending, setPending] = useState(false);
+  const [message, setMessage] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (
+      !form.name.trim() ||
+      !form.surname.trim() ||
+      !form.email.trim() ||
+      !form.password.trim()
+    ) {
+      setMessage("All fields are required.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setMessage("Password must be at least 6 characters long.");
+      return;
+    }
+
+    setPending(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setMessage("User created successfully!");
+      } else {
+        const errorData = await response.json();
+        setMessage(errorData.message || "Error creating user.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("Error creating user.");
+    } finally {
+      setPending(false);
+    }
+  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -23,32 +80,32 @@ export default function Register() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <a href="/">
+        <Link href="/">
           <img
             src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
             alt="logo"
           />
-        </a>
+        </Link>
 
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          <a
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="/"
           >
             HOME
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="#"
           >
             COLLECTION
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="#"
           >
             PRODUCTS
-          </a>
+          </Link>
           <span className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
             OTHER PAGES
           </span>
@@ -57,6 +114,7 @@ export default function Register() {
         <div className="flex space-x-1 text-white items-center gap-7">
           <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
           <button
+            aria-label="Toggle Sidebar"
             className="text-white hover:text-[#aa8453] transition-all"
             onClick={toggleSidebar}
           >
@@ -80,13 +138,13 @@ export default function Register() {
       </div>
 
       <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
-        <div className=" pb-[90px]">
+        <div className="pb-[90px]">
           <h1 className="text-[30px] text-[#222] font-gilda">CREATE ACCOUNT</h1>
 
           <div className="flex justify-center items-center space-x-2 mt-4 text-[13px] text-[#222]">
-            <a href="/">
+            <Link href="/">
               <IoHomeOutline className="w-3 h-3" />
-            </a>
+            </Link>
             <span className="flex justify-center items-center">
               Home <GoDotFill className="text-center mx-2 w-2 h-2" />
               Create Account
@@ -94,103 +152,83 @@ export default function Register() {
           </div>
         </div>
 
-        <div className="w-[600px] h-[400px] flex flex-col pb-4 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="w-[600px] flex flex-col pb-4 space-y-4"
+        >
           <input
             placeholder="FIRST NAME"
-            type="name"
+            disabled={pending}
             className="w-[570px] text-[12px] h-[50px] p-5 border border-[#ececec] focus:border-[#aa8453] rounded hover:border-[#aa8453]"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
-
           <input
-            placeholder="LAST NAME"
-            type="last name"
-            className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
+            placeholder="SURNAME"
+            disabled={pending}
+            className="w-[570px] text-[12px] h-[50px] p-5 border border-[#ececec] focus:border-[#aa8453] rounded hover:border-[#aa8453]"
+            value={form.surname}
+            onChange={(e) => setForm({ ...form, surname: e.target.value })}
           />
           <input
             placeholder="EMAIL"
-            type="email"
-            className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
+            disabled={pending}
+            className="w-[570px] text-[12px] h-[50px] p-5 border border-[#ececec] focus:border-[#aa8453] rounded hover:border-[#aa8453]"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
           <input
             placeholder="PASSWORD"
             type="password"
-            className="w-[570px] text-[12px] h-[50px] p-5 border 1px border-[#ececec] rounded hover:border-[#aa8453]"
+            disabled={pending}
+            className="w-[570px] text-[12px] h-[50px] p-5 border border-[#ececec] rounded hover:border-[#aa8453]"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
           />
           <div className="flex gap-1 text-left">
-            <input type="checkbox" name="" id="" />
+            <input type="checkbox" />
             <span className="text-[12px] font-barlow">
-              Sign Up for our mewsletter
+              Sign Up for our newsletter
             </span>
           </div>
           <div className="flex items-center space-x-2 text-[12px] font-barlow">
-            <span className="pl-1">If you don't have an account, please</span>
-            <a href="/login">
+            <span className="pl-1">If you already have an account, please</span>
+            <Link href="/login">
               <span className="text-[#6aa1da] hover:text-[#aa8453]">
                 Login Here
               </span>
-            </a>
+            </Link>
           </div>
-
-          <button className="bg-[#aa8453] w-[570px] h-[50px] text-white px-6 py-2 rounded hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all">
-            Register
+          <button
+            type="submit"
+            disabled={pending}
+            className={`bg-[#aa8453] w-[570px] h-[50px] text-white px-6 py-2 rounded ${
+              pending
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-[#2b2b2b] hover:text-[#aa8453]"
+            } transition-all`}
+          >
+            {pending ? "Registering..." : "Register"}
           </button>
-        </div>
+          {message && <p className="text-red-500 mt-2">{message}</p>}
+        </form>
       </div>
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-40"
+          className="fixed inset-0 bg-black opacity-50 z-20"
           onClick={closeSidebar}
         ></div>
       )}
 
       <div
-        className={`fixed top-0 right-0 w-[370px] h-full bg-[#ffffff] text-[#6b7280] transform ${
-          isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-700 ease-in-out z-50`}
-      >
-        <div className="px-[40px] py-[100px] text-[18px] text-left">
-          <ul className="space-y-9 ">
-            <li>
-              <a href="/login" className="hover:text-[#aa8453] transition-all">
-                Login
-              </a>
-            </li>
-            <li>
-              <a
-                href="/register"
-                className="hover:text-[#aa8453] transition-all"
-              >
-                Register
-              </a>
-            </li>
-            <li>
-              <a
-                href="/wishlist"
-                className="hover:text-[#aa8453] transition-all"
-              >
-                Wishlist
-              </a>
-            </li>
-            <li>
-              <a
-                href="/account"
-                className="hover:text-[#aa8453] transition-all"
-              >
-                Checkout
-              </a>
-            </li>
-            <li className="pt-[30px] text-[14px] font-gilda">
-              <span>CURRENCY</span>
-              <div className="text-[11px] font-barlow">USD</div>
-            </li>
-            <li className="text-[14px] font-gilda">
-              <span>LANGUAGE</span>
-              <div className="text-[11px] font-barlow">ENGLISH</div>
-            </li>
-          </ul>
-        </div>
-      </div>
+        className={`fixed inset-y-0 right-0 w-[300px] bg-[#aa8453] z-30 transition-transform ${
+          isSidebarOpen
+            ? "transform translate-x-0"
+            : "transform translate-x-full"
+        }`}
+      ></div>
+
       <Footer />
     </div>
   );
