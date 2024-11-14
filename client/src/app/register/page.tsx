@@ -9,6 +9,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import Link from "next/link";
 import { useState } from "react";
+import Sidebar from "@/app/components/SideBar/SideBar";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -79,6 +80,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />{" "}
       <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
         <Link href="/">
           <img
@@ -136,7 +138,6 @@ export default function Register() {
           </div>
         </div>
       </div>
-
       <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
         <div className="pb-[90px]">
           <h1 className="text-[30px] text-[#222] font-gilda">CREATE ACCOUNT</h1>
@@ -213,22 +214,6 @@ export default function Register() {
           {message && <p className="text-red-500 mt-2">{message}</p>}
         </form>
       </div>
-
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-20"
-          onClick={closeSidebar}
-        ></div>
-      )}
-
-      <div
-        className={`fixed inset-y-0 right-0 w-[300px] bg-[#aa8453] z-30 transition-transform ${
-          isSidebarOpen
-            ? "transform translate-x-0"
-            : "transform translate-x-full"
-        }`}
-      ></div>
-
       <Footer />
     </div>
   );
