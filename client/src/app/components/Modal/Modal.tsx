@@ -1,31 +1,67 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Modal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      localStorage.removeItem("dontShowModal");
+      localStorage.removeItem("emailSubmitted");
+    }
+
+    const dontShowAgain = localStorage.getItem("dontShowModal");
+    const emailSubmitted = localStorage.getItem("emailSubmitted");
+
+    if (!dontShowAgain && !emailSubmitted) {
+      openModal();
+    }
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    document.body.style.overflow = "auto";
   };
 
-  useEffect(() => {
-    openModal();
-  }, []);
+  const handleCheckboxChange = (e) => {
+    if (e.target.checked) {
+      localStorage.setItem("dontShowModal", "true");
+    } else {
+      localStorage.removeItem("dontShowModal");
+    }
+  };
+
+  const handleSubmit = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      closeModal();
+      localStorage.setItem("emailSubmitted", "true");
+      toast.success("Email submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }, 2000);
+  };
 
   return (
     <div>
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 overflow-y-auto overflow-x-hidden"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto overflow-x-hidden"
           aria-hidden="true"
         >
           <div
-            className="relative bg-white rounded-lg flex flex-row"
+            className="relative bg-white flex flex-row"
             style={{ width: "885px", height: "550px" }}
           >
             <div className="relative flex flex-row items-center justify-between w-full h-full">
@@ -49,7 +85,7 @@ const Modal = () => {
                 </svg>
               </button>
 
-              <div className="flex flex-row items-center justify-between w-full h-full">
+              <div className="flex flex-row items-center justify-between w-full h-full overflow-y-auto">
                 <div className="flex-shrink-0 w-1/2 h-full">
                   <img
                     src="https://vinova-furstore.myshopify.com/cdn/shop/files/newsletter_540x.jpg?v=1697185401"
@@ -58,28 +94,48 @@ const Modal = () => {
                   />
                 </div>
 
-                <div className="flex flex-col items-center justify-center w-1/2 p-4 h-full">
-                  <h2 className="text-[#202020] text-2xl text-left font-semibold mb-4">
+                <div className="flex flex-col items-start justify-center w-1/2 pr-[50px] pl-[30px] pt-[60px] pb-[30px] h-full">
+                  <h2 className="text-[#202020] text-[20px] font-gilda text-left font-semibold mb-3">
                     NEWSLETTER
                   </h2>
-                  <p className="mb-6 text-center">
+                  <p className="mb-5 text-left text-[12px] text-[#6b7280]">
                     Get 15% off your first purchase! Plus, be the first to know
                     about sales, new product launches, and exclusive offers!
                   </p>
                   <input
-                    className="text-center w-[360px] p-2 mb-4 border rounded-sm"
+                    className="text-center w-[360px] text-[16px] py-[10px] mb-3 border-2 rounded-[4px] border-black"
                     type="email"
                     placeholder="Enter your email"
                   />
-                  <button className="bg-[#aa8453] w-[360px] h-[50px] text-white px-6 py-2 rounded hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all">
-                    Submit
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-[#aa8453] w-[360px] h-[45px] text-white px-4 py-1 rounded hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all mb-3"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Submitting..." : "Submit"}
                   </button>
+
+                  <div className="flex items-center mt-[80px]">
+                    <input
+                      type="checkbox"
+                      id="dont-show-again"
+                      className="mr-2 w-[18px] h-[18px] "
+                      onChange={handleCheckboxChange}
+                    />
+                    <label
+                      htmlFor="dont-show-again"
+                      className="text-[10px] font-barlow text-[#909090]"
+                    >
+                      DON'T SHOW THIS POPUP AGAIN
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };

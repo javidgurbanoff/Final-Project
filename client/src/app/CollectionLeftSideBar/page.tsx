@@ -11,6 +11,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoIosArrowUp } from "react-icons/io";
 import Sidebar from "../components/SideBar/SideBar";
+import Modal from "../components/Modal/Modal";
 
 export default function Login() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -25,6 +26,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <Modal />
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />{" "}
       <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
         <a href="/">
