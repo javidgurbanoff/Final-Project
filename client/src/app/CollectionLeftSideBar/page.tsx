@@ -100,6 +100,7 @@ export default function Login() {
       <div className="w-full">
         <div className="max-w-[1200px] flex px-4 mx-auto">
           <div className="w-[270px]">
+            {/* Categories Section */}
             <div className="mb-8">
               <div className="flex items-center mb-6">
                 <GiHamburgerMenu className="text-lg" />
@@ -125,7 +126,9 @@ export default function Login() {
                 ))}
               </ul>
             </div>
-            <div className="mb-8">
+
+            {/* Filter By Section */}
+            <div className="mb-[25px] pb-[25px]">
               <div className="flex items-center mb-6">
                 <MdOutlineTune className="text-lg" />
                 <h5 className="font-gilda text-lg text-[#202020] pl-2">
@@ -139,42 +142,49 @@ export default function Login() {
             </div>
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-2">
-                  <IoIosArrowUp className="text-[#202020]" />
-                  <h6 className="text-[14px] text-[#202020] font-extrabold font-barlow">
-                    AVAILABILITY
-                  </h6>
-                </div>
+                <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
+                  COLOR
+                </h6>
+                <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
+                  RESET
+                </span>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
+                  AVAILABILITY
+                </h6>
                 <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
                   RESET
                 </span>
               </div>
               <div className="space-y-2">
-                <label className="flex items-center text-[#6b7280] text-sm">
-                  <input type="checkbox" className="mr-2" />
-                  In stock
-                  <span className="ml-auto text-[10px] text-[#bcbcbc]">
-                    (32)
-                  </span>
-                </label>
-                <label className="flex items-center text-[#6b7280] text-sm">
-                  <input type="checkbox" className="mr-2" />
-                  Out of stock
-                  <span className="ml-auto text-[10px] text-[#bcbcbc]">
-                    (1)
-                  </span>
-                </label>
+                {[
+                  { label: "In stock", count: 32 },
+                  { label: "Out of stock", count: 1 },
+                ].map((item) => (
+                  <label
+                    key={item.label}
+                    className="flex items-center text-[#6b7280] text-sm"
+                  >
+                    <input type="checkbox" className="mr-2" />
+                    {item.label}
+                    <span className="ml-auto text-[10px] text-[#bcbcbc]">
+                      ({item.count})
+                    </span>
+                  </label>
+                ))}
               </div>
             </div>
 
+            {/* Price Filter Section */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-2">
-                  <IoIosArrowUp className="text-[#202020]" />
-                  <h6 className="text-[14px] text-[#202020] font-extrabold font-barlow">
-                    PRICE
-                  </h6>
-                </div>
+                <h6 className="text-[14px] text-[#202020] font-extrabold font-barlow">
+                  PRICE
+                </h6>
                 <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
                   RESET
                 </span>
@@ -182,7 +192,7 @@ export default function Login() {
               <div className="relative mb-4">
                 <div className="h-2 bg-[#aa8453] rounded-full"></div>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-[25px] pb-[25px]">
                 <input
                   type="text"
                   className="w-[90px] border border-[#e0e0e0] rounded p-1 text-center"
@@ -196,6 +206,88 @@ export default function Login() {
                   value="956"
                   readOnly
                 />
+              </div>
+            </div>
+
+            {/* Product Type Filter Section */}
+            <div className="mb-[25px] pb-[25px]">
+              <div className="flex items-center justify-between mb-4">
+                <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
+                  PRODUCT TYPE
+                </h6>
+                <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
+                  RESET
+                </span>
+              </div>
+              <div className="space-y-2 max-h-40 w-64 overflow-y-auto">
+                {[
+                  "Baskets",
+                  "Chairs",
+                  "Clocks",
+                  "Flower Pot",
+                  "Flower Vase",
+                  "Lamps",
+                  "Post & Planters",
+                  "Tables",
+                ].map((item) => (
+                  <label
+                    key={item}
+                    className="flex items-center text-[#6b7280] hover:text-[#aa8453] text-sm"
+                  >
+                    <input type="checkbox" className="mr-2" />
+                    {item}
+                    <span className="ml-auto text-[10px] text-[#bcbcbc]">
+                      (1)
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-6 gap-2 mb-[25px] pb-[25px]">
+              {[
+                "bg-black",
+                "[background-color:#0000FF]",
+                "[background-color:#A52A2A]",
+                "[background-color:#5F9EA0]",
+                "[background-color:#008B8B]",
+                "bg-orange-500",
+                "bg-cyan-500",
+                "bg-blue-300",
+                "bg-gray-400",
+                "bg-sky-200",
+                "bg-purple-500",
+                "bg-yellow-100",
+                "bg-indigo-900",
+                "bg-yellow-500",
+                "bg-red-600",
+                "[background-color:#FFFFFF]",
+                "bg-yellow-400",
+                "bg-lime-500",
+              ].map((color, index) => (
+                <div
+                  key={index}
+                  className={`w-[28px] h-[28px] rounded-full ${color} cursor-pointer border`}
+                />
+              ))}
+            </div>
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
+                  SIZE
+                </h6>
+                <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
+                  RESET
+                </span>
+              </div>
+              <div className="flex space-x-2">
+                {["Small", "Medium", "Large"].map((size) => (
+                  <button
+                    key={size}
+                    className="border border-gray-300 rounded px-4 py-2 text-sm hover:bg-gray-100"
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
             </div>
           </div>

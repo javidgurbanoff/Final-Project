@@ -1,4 +1,5 @@
 import Header from "./features/header/header";
+import Modal from "./components/Modal/Modal";
 import BillingCards from "./components/BillingCards/BillingCards";
 import AboutUs from "./components/AboutUs/AboutUs";
 import LivingRoom from "./components/LivingRoom/LivingRoom";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <div>
       <Header />
+      <Modal />
       <BillingCards />
       <AboutUs />
       <LivingRoom />

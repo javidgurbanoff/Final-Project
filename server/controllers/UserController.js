@@ -6,6 +6,12 @@ const AuthRegister = async (req, res) => {
   const { username, password } = req.body;
 
   try {
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
+    }
+
     const existingUser = await users.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -26,8 +32,8 @@ const AuthRegister = async (req, res) => {
 
     res.status(201).json({ token, user: { username: newUser.username } });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Register error:", error);
+    res.status(400).json({ message: "Bad request", error: error.message });
   }
 };
 
@@ -35,6 +41,12 @@ const AuthLogin = async (req, res) => {
   const { username, password } = req.body;
 
   try {
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
+    }
+
     const user = await users.findOne({ username });
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
@@ -51,8 +63,8 @@ const AuthLogin = async (req, res) => {
 
     res.status(200).json({ token, user: { username: user.username } });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Login error:", error);
+    res.status(400).json({ message: "Bad request", error: error.message });
   }
 };
 
