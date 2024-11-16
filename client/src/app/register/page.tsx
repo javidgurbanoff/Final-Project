@@ -1,16 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
-import { GoPerson } from "react-icons/go";
-import { IoIosStarOutline } from "react-icons/io";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
+import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 import Link from "next/link";
-import Sidebar from "@/app/components/SideBar/SideBar";
 import Modal from "@/app/components/Modal/Modal";
 
 export default function Register() {
@@ -69,64 +64,8 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <NavbarWithSidebar />
       <Modal />
-      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
-      <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <Link href="/">
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
-            alt="logo"
-          />
-        </Link>
-
-        <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          <Link
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="/"
-          >
-            HOME
-          </Link>
-          <Link
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            COLLECTION
-          </Link>
-          <Link
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            PRODUCTS
-          </Link>
-          <span className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
-            OTHER PAGES
-          </span>
-        </div>
-
-        <div className="flex space-x-1 text-white items-center gap-7">
-          <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
-          <button
-            className="text-white hover:text-[#aa8453] transition-all"
-            onClick={toggleSidebar}
-          >
-            <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
-          </button>
-
-          <div className="relative">
-            <IoIosStarOutline className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
-              0
-            </span>
-          </div>
-
-          <div className="relative">
-            <MdOutlineShoppingCart className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
-              0
-            </span>
-          </div>
-        </div>
-      </div>
       <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
         <div className=" pb-[90px]">
           <h1 className="text-[30px] text-[#222] font-gilda">ACCOUNT</h1>
@@ -185,11 +124,13 @@ export default function Register() {
           <button
             type="submit"
             disabled={pending}
-            className={`bg-[#aa8453] text-white font-bold py-2 px-4 rounded mt-4 w-full ${
-              pending ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`bg-[#aa8453] w-[570px] h-[50px] text-white px-6 py-2 rounded ${
+              pending
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-[#2b2b2b] hover:text-[#aa8453]"
+            } transition-all`}
           >
-            {pending ? "Please wait..." : "Register"}
+            {pending ? "Registering..." : "Register"}
           </button>
           {message && <p className="text-red-500 mt-4">{message}</p>}
         </form>

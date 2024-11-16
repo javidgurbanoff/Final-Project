@@ -3,14 +3,11 @@
 import React, { useState } from "react";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
-import { GoPerson, GoDotFill } from "react-icons/go";
-import { IoIosStarOutline } from "react-icons/io";
-import { MdOutlineShoppingCart, MdOutlineTune } from "react-icons/md";
+import { GoDotFill } from "react-icons/go";
+import { MdOutlineTune } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoTrashOutline } from "react-icons/io5";
-import { IoIosArrowUp } from "react-icons/io";
-import Sidebar from "../components/SideBar/SideBar";
+import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 import Modal from "../components/Modal/Modal";
 
 export default function Login() {
@@ -26,64 +23,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <NavbarWithSidebar />
       <Modal />
-      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />{" "}
-      <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <a href="/">
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
-            alt="logo"
-          />
-        </a>
-
-        <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          <a
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="/"
-          >
-            HOME
-          </a>
-          <a
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            COLLECTION
-          </a>
-          <a
-            className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-            href="#"
-          >
-            PRODUCTS
-          </a>
-          <span className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
-            OTHER PAGES
-          </span>
-        </div>
-
-        <div className="flex space-x-1 text-white items-center gap-7">
-          <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
-          <button
-            className="text-white hover:text-[#aa8453] transition-all"
-            onClick={toggleSidebar}
-          >
-            <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
-          </button>
-
-          <div className="relative">
-            <IoIosStarOutline className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
-              0
-            </span>
-          </div>
-
-          <div className="relative">
-            <MdOutlineShoppingCart className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
-              0
-            </span>
-          </div>
-        </div>
-      </div>
       <div className="pt-[147px] pb-[147px] mb-[110px] h-[375px] bg-[#e7e8eb]">
         <div className="ml-44">
           <h1 className="text-[30px] font-gilda mb-[7px] text-[#222222]">
@@ -102,7 +43,6 @@ export default function Login() {
       <div className="w-full">
         <div className="max-w-[1200px] flex px-4 mx-auto">
           <div className="w-[270px]">
-            {/* Categories Section */}
             <div className="mb-8">
               <div className="flex items-center mb-6">
                 <GiHamburgerMenu className="text-lg" />
@@ -129,7 +69,6 @@ export default function Login() {
               </ul>
             </div>
 
-            {/* Filter By Section */}
             <div className="mb-[25px] pb-[25px]">
               <div className="flex items-center mb-6">
                 <MdOutlineTune className="text-lg" />
@@ -181,7 +120,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Price Filter Section */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h6 className="text-[14px] text-[#202020] font-extrabold font-barlow">
@@ -211,7 +149,6 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Product Type Filter Section */}
             <div className="mb-[25px] pb-[25px]">
               <div className="flex items-center justify-between mb-4">
                 <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">

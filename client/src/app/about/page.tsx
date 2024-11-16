@@ -3,11 +3,10 @@
 import React, { useState } from "react";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
-import { GoPerson } from "react-icons/go";
-import { IoIosStarOutline } from "react-icons/io";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
+import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
+import BackToTopButton from "../components/BackToTopButton/BackToTopButton";
+import Modal from "../components/Modal/Modal";
 
 export default function About() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,52 +21,9 @@ export default function About() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <a href="/">
-          <img
-            src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
-            alt="Vinova Fur Store Logo"
-          />
-        </a>
-
-        <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          {["HOME", "COLLECTION", "PRODUCTS", "OTHER PAGES"].map(
-            (item, index) => (
-              <a
-                key={index}
-                className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all py-[10px] px-[30px]"
-                href={item === "HOME" ? "/" : "#"}
-              >
-                {item}
-              </a>
-            )
-          )}
-        </div>
-
-        <div className="flex space-x-7 text-white items-center">
-          <FaSearch className="transition-all cursor-pointer w-[19px] h-[19px]" />
-          <button
-            className="text-white hover:text-[#aa8453] transition-all"
-            onClick={toggleSidebar}
-          >
-            <GoPerson className="w-[24px] h-[24px]" />
-          </button>
-
-          <div className="relative">
-            <IoIosStarOutline className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center justify-center">
-              0
-            </span>
-          </div>
-
-          <div className="relative">
-            <MdOutlineShoppingCart className="transition-all cursor-pointer w-[24px] h-[24px]" />
-            <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center justify-center">
-              0
-            </span>
-          </div>
-        </div>
-      </div>
+      <NavbarWithSidebar />
+      <BackToTopButton />
+      <Modal />
 
       <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
         <div className="pb-[90px]">
@@ -185,45 +141,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-40"
-          onClick={closeSidebar}
-        />
-      )}
-
-      <div
-        className={`fixed top-0 right-0 w-[370px] h-full bg-[#ffffff] text-[#6b7280] transform ${
-          isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-700 ease-in-out z-50`}
-      >
-        <div className="px-[40px] py-[100px] text-[18px]">
-          <ul className="space-y-9">
-            {["Login", "Register", "Wishlist", "Checkout"].map(
-              (item, index) => (
-                <li key={index}>
-                  <a
-                    href={`/${item.toLowerCase()}`}
-                    className="hover:text-[#aa8453] transition-all"
-                  >
-                    {item}
-                  </a>
-                </li>
-              )
-            )}
-            <li className="pt-[30px] text-[14px] font-gilda">
-              <span>CURRENCY</span>
-              <div className="text-[11px] font-barlow">USD</div>
-            </li>
-            <li className="text-[14px] font-gilda">
-              <span>LANGUAGE</span>
-              <div className="text-[11px] font-barlow">ENGLISH</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
       <Footer />
     </div>
   );

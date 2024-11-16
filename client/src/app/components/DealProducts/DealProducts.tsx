@@ -39,7 +39,6 @@ const DealProductCard = ({ product }) => {
         )}
       </div>
 
-      {/* Product Info */}
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h3 className="text-[14px] font-barlow text-[#000000]">
