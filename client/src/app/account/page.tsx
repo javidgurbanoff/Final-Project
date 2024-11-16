@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";
 import { GoDotFill } from "react-icons/go";
+import Link from "next/link";
 import Modal from "../components/Modal/Modal";
 import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 export default function Login() {
@@ -26,9 +27,9 @@ export default function Login() {
           <h1 className="text-[30px] text-[#222] font-gilda">ACCOUNT</h1>
 
           <div className="flex justify-center items-center space-x-2 mt-4 text-[#222]">
-            <a href="/">
+            <Link href="/">
               <IoHomeOutline className="w-3 h-3" />
-            </a>
+            </Link>
             <span className="flex justify-center items-center">
               Home <GoDotFill className="text-center mx-2 w-2 h-2" /> Account
             </span>

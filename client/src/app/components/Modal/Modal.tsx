@@ -95,7 +95,7 @@ const Modal = () => {
                 </div>
 
                 <div className="flex flex-col items-start justify-center w-1/2 pr-[50px] pl-[30px] pt-[60px] pb-[30px] h-full">
-                  <h2 className="text-[#202020] text-[20px] font-gilda text-left font-semibold mb-3">
+                  <h2 className="text-[#202020] text-[25px] font-gilda text-left font-semibold mb-3">
                     NEWSLETTER
                   </h2>
                   <p className="mb-5 text-left text-[12px] text-[#6b7280]">

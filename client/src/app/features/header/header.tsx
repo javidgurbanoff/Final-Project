@@ -6,8 +6,8 @@ import { GoPerson } from "react-icons/go";
 import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import BackToTopButton from "@/app/components/BackToTopButton/BackToTopButton";
-import SearchBar from "@/app/components/SearchBar/SearchBar";
 import CookieConsent from "@/app/components/CookieConsent/CookieConsent";
+import Link from "next/link";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -40,6 +40,9 @@ const Header = () => {
       link: "#",
       subItems: [
         { name: "Collection 1", link: "#" },
+        { name: "Collection 2", link: "#" },
+        { name: "Collection 2", link: "#" },
+        { name: "Collection 2", link: "#" },
         { name: "Collection 2", link: "#" },
       ],
     },
@@ -81,43 +84,43 @@ const Header = () => {
           DESIGN YOUR HOME
         </span>
         <br />
-        <a
+        <Link
           href="#"
           className="text-[14px] mb-3 inline-block font-barlow underline underline-offset-2 hover:text-[#aa8453] transition-all duration-300"
         >
           DISCOVERY NOW
-        </a>
+        </Link>
       </div>
 
       <div className="absolute top-8 left-4 right-4 flex justify-between items-center pl-[159px] pr-[175px]">
-        <a href="/">
+        <Link href="/">
           <img
             src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
             alt="logo"
             className="cursor-pointer"
           />
-        </a>
+        </Link>
 
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
           {NavbarItems.map((item, index) => (
             <div key={index} className="relative group">
-              <a
+              <Link
                 href={item.link}
                 className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
               >
                 {item.name}
-              </a>
+              </Link>
               {item.subItems && (
-                <div className="hidden group-hover:block absolute left-0 mt-12 text-left w-[270px] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
+                <div className="hidden group-hover:block absolute left-0 mt-12 text-left w-[100%] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
                   <div className="py-1">
                     {item.subItems.map((subItem, subIndex) => (
-                      <a
+                      <Link
                         key={subIndex}
                         href={subItem.link}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         {subItem.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -131,9 +134,9 @@ const Header = () => {
             className="transition-all cursor-pointer w-[19px] h-[19px]"
             onClick={toggleSearchBar}
           />
-          <a href="#" onClick={toggleSidebar}>
+          <Link href="#" onClick={toggleSidebar}>
             <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
-          </a>
+          </Link>
           <div className="relative">
             <IoIosStarOutline className="transition-all cursor-pointer w-[24px] h-[24px]" />
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
@@ -192,33 +195,36 @@ const Header = () => {
         <div className="px-[40px] py-[100px] text-[18px] text-left">
           <ul className="space-y-9 text-[#222222] font-barlow">
             <li>
-              <a href="/login" className="hover:text-[#aa8453] transition-all">
+              <Link
+                href="/login"
+                className="hover:text-[#aa8453] transition-all"
+              >
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/register"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Register
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/wishlist"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Wishlist
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/account"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Checkout
-              </a>
+              </Link>
             </li>
             <li className="pt-[30px] text-[14px] font-gilda">
               <span>CURRENCY</span>

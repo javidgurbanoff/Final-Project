@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
 import { IoIosStarOutline } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import Link from "next/link";
 
 const NavbarWithSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,33 +20,33 @@ const NavbarWithSidebar = () => {
 
   return (
     <>
-      <div className="w-full h-[108px] flex justify-between items-center pl-[159px] bg-[#020202] pr-[175px]">
-        <a href="/#">
+      <div className="w-full h-[108px] flex justify-between items-center pl-[175px] bg-[#020202] pr-[185px]">
+        <Link href="/">
           <img
             src="https://vinova-furstore.myshopify.com/cdn/shop/files/Logo_2.png?v=1696826748&width=160"
             alt="logo"
           />
-        </a>
+        </Link>
 
         <div className="flex font-barlow pt-[2px] text-[15px] pl-[53px]">
-          <a
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="/"
           >
             HOME
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="#"
           >
             COLLECTION
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
             href="#"
           >
             PRODUCTS
-          </a>
+          </Link>
           <span className="text-[#fff] hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]">
             OTHER PAGES
           </span>
@@ -90,33 +91,36 @@ const NavbarWithSidebar = () => {
         <div className="px-[40px] py-[100px] text-[18px] text-left">
           <ul className="space-y-9 ">
             <li>
-              <a href="/login" className="hover:text-[#aa8453] transition-all">
+              <Link
+                href="/login"
+                className="hover:text-[#aa8453] transition-all"
+              >
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/register"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Register
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/wishlist"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Wishlist
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/account"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Checkout
-              </a>
+              </Link>
             </li>
             <li className="pt-[30px] text-[14px] font-gilda">
               <span>CURRENCY</span>

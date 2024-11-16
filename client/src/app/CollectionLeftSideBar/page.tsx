@@ -7,10 +7,11 @@ import { GoDotFill } from "react-icons/go";
 import { MdOutlineTune } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoTrashOutline } from "react-icons/io5";
+import Link from "next/link";
 import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 import Modal from "../components/Modal/Modal";
 
-export default function Login() {
+export default function CollectionLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -31,9 +32,9 @@ export default function Login() {
             ARMCHAIR
           </h1>
           <div className="flex items-center space-x-2 text-[11px] text-[#222]">
-            <a href="/">
+            <Link href="/">
               <IoHomeOutline className="w-4 h-4" />
-            </a>
+            </Link>
             <span className="flex justify-center pt-1 items-center">
               Home <GoDotFill className="text-center mx-2 w-3 h-3" /> Armchair
             </span>

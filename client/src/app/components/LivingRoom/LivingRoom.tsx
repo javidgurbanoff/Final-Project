@@ -66,7 +66,7 @@ const LivingRoom = () => {
             featureds.map((item: any, index) => (
               <div key={index} className="flex flex-col items-center mx-4">
                 <img
-                  className="w-[194px] h-[240px] object-cover"
+                  className="w-[194px] h-[240px] object-cover  transition-transform duration-[1500ms] ease-in-out transform hover:scale-105"
                   src={item.imageURL}
                   alt={item.title}
                 />
