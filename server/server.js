@@ -1,28 +1,19 @@
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-mongoose.set("strictQuery", true);
-
-dotenv.config();
 const app = express();
+const dotenv = require("dotenv").config();
+const cors = require("cors");
+const connectDB = require("./db/ConnectDb");
+const { AuthRegister } = require("./controllers/UserController");
 
 app.use(express.json());
+app.use(express.json({ extends: true }));
 app.use(cors());
 
-console.log("MongoDB URI:", process.env.MONGODB_URI);
+connectDB();
 
-mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/mydb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("MongoDB connected");
-  })
-  .catch((error) => {
-    console.error("MongoDB connection error:", error);
-  });
+const PORT = process.env.PORT || 8080;
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use("/api/v1/auth", AuthRegister);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
