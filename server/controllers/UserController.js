@@ -41,4 +41,4 @@ const AuthRegister = async (req, res) => {
   }
 };
 
-module.exports = { AuthRegister };
+module.exports = { AuthRegister};

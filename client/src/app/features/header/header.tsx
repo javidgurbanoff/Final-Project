@@ -111,7 +111,7 @@ const Header = () => {
                 {item.name}
               </Link>
               {item.subItems && (
-                <div className="hidden group-hover:block absolute left-0 mt-12 text-left w-[100%] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
+                <div className="hidden group-hover:block absolute left-0 mt-4 text-left w-[100%] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
                   <div className="py-1">
                     {item.subItems.map((subItem, subIndex) => (
                       <Link

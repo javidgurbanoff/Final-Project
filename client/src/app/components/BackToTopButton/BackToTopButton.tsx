@@ -28,13 +28,13 @@ const BackToTopButton = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-16 right-4 p-3 rounded-full border-2 border-[#aa8453] bg-[#aa8453] text-white w-[40px] h-[40px]
-                transition-opacity duration-300 ease-in-out ${
+      className={`fixed bottom-16 right-4 p-3 rounded-full border-2 border-[#aa8453] bg-[#aa8453] text-[#fff] w-[40px] h-[40px]
+                flex items-center justify-center transition-opacity duration-300 ease-in-out ${
                   isVisible ? "opacity-100" : "opacity-0"
                 }`}
       aria-label="Back to top"
     >
-      <IoIosArrowUp className="items-center justify-center" />
+      <IoIosArrowUp />
     </button>
   );
 };

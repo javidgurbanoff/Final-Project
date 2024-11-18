@@ -5,9 +5,12 @@ const LivingRoom = () => {
   const [featureds, setFeatureds] = useState([]);
 
   const getFeatureds = () => {
-    fetch("")
+    fetch("http://localhost:3001/api/v1/livingroom")
       .then((res) => res.json())
-      .then((data) => setFeatureds(data))
+      .then((data) => {
+        console.log("Fetched data:", data);
+        setFeatureds(data);
+      })
       .catch((err) => console.error("Error fetching featureds:", err));
   };
 
@@ -70,10 +73,10 @@ const LivingRoom = () => {
                   src={item.imageURL}
                   alt={item.title}
                 />
-                <h3 className="text-[16px] mt-2">{item.title}</h3>
-                <button className="mt-2 bg-blue-500 text-white py-1 px-3 rounded">
+                <button className="mt-2 bg-[#222] text-[#aa8453] py-1 px-3 rounded">
                   Quick Add
                 </button>
+                <h3 className="text-[16px] mt-2">{item.title}</h3>
               </div>
             ))
           ) : (

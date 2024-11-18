@@ -12,7 +12,6 @@ const CartSidebar = ({ isSidebarOpen, closeSidebar, type }) => {
         &times;
       </button>
 
-      {/* Conditional Content */}
       {type === "person" ? (
         <div>
           <h2 className="text-lg font-semibold mb-4">Account</h2>
@@ -38,7 +37,6 @@ const CartSidebar = ({ isSidebarOpen, closeSidebar, type }) => {
         <div>
           <h2 className="text-lg font-semibold mb-4">Shopping Cart</h2>
           <p className="text-gray-500">Your cart is currently empty.</p>
-          {/* Add logic here to display actual cart items if needed */}
         </div>
       )}
     </div>

@@ -1,13 +1,16 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-const LivingRoom = () => {
+const BedRoom = () => {
   const [featureds, setFeatureds] = useState([]);
 
   const getFeatureds = () => {
-    fetch("")
+    fetch("http://localhost:3001/api/v1/bedroom")
       .then((res) => res.json())
-      .then((data) => setFeatureds(data))
+      .then((data) => {
+        console.log("Fetched data:", data);
+        setFeatureds(data);
+      })
       .catch((err) => console.error("Error fetching featureds:", err));
   };
 
@@ -55,7 +58,7 @@ const LivingRoom = () => {
 
         <img
           src="https://vinova-furstore.myshopify.com/cdn/shop/files/img-4-5_380x.png?v=1696904103"
-          alt="Living Room"
+          alt="BedRoom"
           className="w-[293px] h-[320px] object-cover ml-auto"
         />
       </div>
@@ -70,10 +73,10 @@ const LivingRoom = () => {
                   src={item.imageURL}
                   alt={item.title}
                 />
-                <h3 className="text-[16px] mt-2">{item.title}</h3>
-                <button className="mt-2 bg-blue-500 text-white py-1 px-3 rounded">
+                <button className="mt-2 bg-[#222] text-[#aa8453] py-1 px-3 rounded">
                   Quick Add
                 </button>
+                <h3 className="text-[16px] mt-2">{item.title}</h3>
               </div>
             ))
           ) : (
@@ -85,4 +88,4 @@ const LivingRoom = () => {
   );
 };
 
-export default LivingRoom;
+export default BedRoom;

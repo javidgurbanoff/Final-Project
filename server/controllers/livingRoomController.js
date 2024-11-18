@@ -1,61 +1,78 @@
-const Collection = require("../models/collections");
+const LivingRoom = require("../models/LivingRoom");
 
-async function GetCollections(req, res, next) {
+async function GetLivingRooms(req, res, next) {
   try {
-    const collections = await Collection.find();
-    res.status(200).json(collections);
+    const livingRooms = await LivingRoom.find();
+    res.status(200).json(livingRooms);
   } catch (err) {
-    res.status(200).json(err);
+    res
+      .status(500)
+      .json({ error: "Error fetching living rooms", details: err });
   }
 }
 
-async function GetCollectionById(req, res) {
+async function GetLivingRoomById(req, res, next) {
   try {
-    const SingleCollection = await Collection.findById(req.params.id);
-    res.status(200).json(SingleCollection);
+    const singleLivingRoom = await LivingRoom.findById(req.params.id);
+    if (!singleLivingRoom) {
+      return res.status(404).json({ error: "Living room not found" });
+    }
+    res.status(200).json(singleLivingRoom);
   } catch (err) {
-    res.status(200).json(err);
+    res
+      .status(500)
+      .json({ error: "Error fetching living room by ID", details: err });
   }
 }
 
-async function UpdateCollectionById(req, res, next) {
+async function UpdateLivingRoomById(req, res, next) {
   try {
     const { id } = req.params;
-    const updatedCollection = await Collection.findByIdAndUpdate(
+    const updatedLivingRoom = await LivingRoom.findByIdAndUpdate(
       id,
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json(updatedCollection);
+    if (!updatedLivingRoom) {
+      return res
+        .status(404)
+        .json({ error: "Living room not found for update" });
+    }
+    res.status(200).json(updatedLivingRoom);
   } catch (err) {
-    next(err);
+    res.status(500).json({ error: "Error updating living room", details: err });
   }
 }
 
-async function DeleteCollectionById(req, res, next) {
+async function DeleteLivingRoomById(req, res, next) {
   try {
     const { id } = req.params;
-    await Collection.findByIdAndDelete(id);
-    res.status(200).json("Collection has been deleted.");
+    const deletedLivingRoom = await LivingRoom.findByIdAndDelete(id);
+    if (!deletedLivingRoom) {
+      return res
+        .status(404)
+        .json({ error: "Living room not found for deletion" });
+    }
+    res.status(200).json({ message: "Living room has been deleted." });
   } catch (err) {
-    next(err);
+    res.status(500).json({ error: "Error deleting living room", details: err });
   }
 }
 
-async function CreateCollection(req, res, next) {
-  const newCollection = new Collection(req.body);
+async function CreateLivingRoom(req, res, next) {
+  const newLivingRoom = new LivingRoom(req.body);
   try {
-    const savedCollection = await newCollection.save();
-    res.status(200).json(savedCollection);
+    const savedLivingRoom = await newLivingRoom.save();
+    res.status(201).json(savedLivingRoom);
   } catch (err) {
-    next(err);
+    res.status(500).json({ error: "Error creating living room", details: err });
   }
 }
 
 module.exports = {
-  GetCollections,
-  GetCollectionById,
-  UpdateCollectionById,
-  DeleteCollectionById,
-  CreateCollection,
+  GetLivingRooms,
+  GetLivingRoomById,
+  UpdateLivingRoomById,
+  DeleteLivingRoomById,
+  CreateLivingRoom,
 };
