@@ -1,11 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { FaStar, FaRegStar } from "react-icons/fa";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 
 interface Product {
+  id: number;
   imageURL: string;
   title: string;
   stars: number;
   price: number;
+  rating: number;
 }
 
 const KitchenRoom: React.FC = () => {
@@ -80,6 +84,26 @@ const KitchenRoom: React.FC = () => {
                   src={item.imageURL}
                   alt={item.title}
                 />
+                <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
+                  <div className="flex space-x-4 mb-4">
+                    <AiOutlineHeart className="text-white text-xl cursor-pointer" />
+                    <AiOutlineShoppingCart className="text-white text-xl cursor-pointer" />
+                  </div>
+                  <button className="bg-[#222] text-[#aa8453] py-1 px-3 rounded">
+                    Quick Add
+                  </button>
+                  <div className="flex mt-2">
+                    {[...Array(5)].map((_, starIndex) => (
+                      <span key={starIndex}>
+                        {starIndex < Math.floor(item.rating) ? (
+                          <FaStar className="text-[#aa8453]" />
+                        ) : (
+                          <FaRegStar className="text-[#aa8453]" />
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <h3 className="text-[16px] text-[#000000] mt-2">
                   {item.title}
                 </h3>

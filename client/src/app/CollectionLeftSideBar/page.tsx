@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import Footer from "../features/footer/footer";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoHomeOutline, IoTrashOutline } from "react-icons/io5";
 import { GoDotFill } from "react-icons/go";
 import { MdOutlineTune } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoTrashOutline } from "react-icons/io5";
 import Link from "next/link";
 import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 import Modal from "../components/Modal/Modal";
+import BackToTopButton from "../components/BackToTopButton/BackToTopButton";
 
 export default function CollectionLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,8 +22,84 @@ export default function CollectionLeftSidebar() {
     setIsSidebarOpen(false);
   };
 
+  const catalogFurnitur = [
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/32_360x.jpg?v=1694678290",
+      title: "Uiamond Halo Strud Cum",
+      star: "4",
+      price: "628",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/21_360x.jpg?v=1694678180",
+      title: "Diamond Uiamond Halo Stud Sociis",
+      star: "4",
+      price: "200",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/18_360x.jpg?v=1694678145",
+      title: "Diamond Halo Stud Quis",
+      star: "4",
+      price: "736",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/12_360x.jpg?v=1694678190",
+      title: "Diamond Halo Stud Magnis",
+      star: "4",
+      price: "325",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/13_360x.jpg?v=1694678199",
+      title: "Diamond Halo Stud Massa",
+      star: "0",
+      price: "450",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15_360x.jpg?v=1694678110",
+      title: "Diamond Halo Stud Monte",
+      star: "0",
+      price: "236",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/1_c2307dbf-d624-4bcd-b3de-99a7963f7496_360x.jpg?v=1694678001",
+      title: "Diamond Halo Stud Conse",
+      star: "0",
+      price: "198",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/34_360x.jpg?v=1694677982",
+      title: "Diamond Halo Stud Donec",
+      star: "0",
+      price: "409",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/3_360x.jpg?v=1694678220",
+      title: "Diamond Halo Stud Cum",
+      star: "0",
+      price: "300",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/7_d7204dd0-b555-40c6-a0db-7b659380a3af_360x.jpg?v=1694678092",
+      title: "Diamond Halo Stud Dolor",
+      star: "0",
+      price: "269",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/9_360x.jpg?v=1694678010",
+      title: "Diamond Halo Stud Earrings",
+      star: "4",
+      price: "472",
+    },
+    {
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/16_360x.jpg?v=1694678119",
+      title: "Diamond Halo Stud Natoque",
+      star: "2",
+      price: "479",
+    },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <BackToTopButton />
       <NavbarWithSidebar />
       <Modal />
       <div className="pt-[147px] pb-[147px] mb-[110px] h-[375px] bg-[#e7e8eb]">
@@ -41,6 +117,7 @@ export default function CollectionLeftSidebar() {
           </div>
         </div>
       </div>
+
       <div className="w-full">
         <div className="max-w-[1200px] flex px-4 mx-auto">
           <div className="w-[270px]">
@@ -82,6 +159,7 @@ export default function CollectionLeftSidebar() {
                 <h6 className="text-base">Clear All</h6>
               </div>
             </div>
+
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
                 <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
@@ -90,6 +168,33 @@ export default function CollectionLeftSidebar() {
                 <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
                   RESET
                 </span>
+              </div>
+              <div className="grid grid-cols-6 gap-2">
+                {[
+                  "bg-black",
+                  "[background-color:#0000FF]",
+                  "[background-color:#A52A2A]",
+                  "[background-color:#5F9EA0]",
+                  "[background-color:#008B8B]",
+                  "bg-orange-500",
+                  "bg-cyan-500",
+                  "bg-blue-300",
+                  "bg-gray-400",
+                  "bg-sky-200",
+                  "bg-purple-500",
+                  "bg-yellow-100",
+                  "bg-indigo-900",
+                  "bg-yellow-500",
+                  "bg-red-600",
+                  "[background-color:#FFFFFF]",
+                  "bg-yellow-400",
+                  "bg-lime-500",
+                ].map((color, index) => (
+                  <div
+                    key={index}
+                    className={`w-[28px] h-[28px] rounded-full ${color} cursor-pointer border`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -172,7 +277,7 @@ export default function CollectionLeftSidebar() {
                 ].map((item) => (
                   <label
                     key={item}
-                    className="flex items-center text-[#6b7280] hover:text-[#aa8453] text-sm"
+                    className="flex items-center text-[#6b7280] text-sm"
                   >
                     <input type="checkbox" className="mr-2" />
                     {item}
@@ -183,56 +288,40 @@ export default function CollectionLeftSidebar() {
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-6 gap-2 mb-[25px] pb-[25px]">
-              {[
-                "bg-black",
-                "[background-color:#0000FF]",
-                "[background-color:#A52A2A]",
-                "[background-color:#5F9EA0]",
-                "[background-color:#008B8B]",
-                "bg-orange-500",
-                "bg-cyan-500",
-                "bg-blue-300",
-                "bg-gray-400",
-                "bg-sky-200",
-                "bg-purple-500",
-                "bg-yellow-100",
-                "bg-indigo-900",
-                "bg-yellow-500",
-                "bg-red-600",
-                "[background-color:#FFFFFF]",
-                "bg-yellow-400",
-                "bg-lime-500",
-              ].map((color, index) => (
-                <div
-                  key={index}
-                  className={`w-[28px] h-[28px] rounded-full ${color} cursor-pointer border`}
-                />
-              ))}
-            </div>
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h6 className="text-[12px] text-[#202020] font-extrabold font-barlow">
-                  SIZE
-                </h6>
-                <span className="text-[10px] text-[#bcbcbc] cursor-pointer">
-                  RESET
-                </span>
-              </div>
-              <div className="flex space-x-2">
-                {["Small", "Medium", "Large"].map((size) => (
-                  <button
-                    key={size}
-                    className="border border-gray-300 rounded px-4 py-2 text-sm hover:bg-gray-100"
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
-          <div className="flex-1 bg-gray-100"></div>
+          <div className="flex-1 bg-gray-100 p-4 pl-[60px]">
+            <div className="flex gap-1 items-center text-[14px] mb-4">
+              <span>Sort By </span>
+              <span className="font-bold">Featured</span>
+              <span className="text-[#202020]"></span>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              {catalogFurnitur.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-4 cursor-pointer transition"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-40 object-cover mb-2 rounded"
+                  />
+                  <p className="font-bold text-[#222222] mb-1">{item.title}</p>
+                  <span className="text-[#6b7280]">${item.price}</span>
+                </div>
+              ))}
+            </div>
+            <div className=" w-[840px] h-[123px] flex flex-col items-center justify-center mb-[15px]">
+              <span className="text-[12px] font-barlow ">
+                Showinf 12 of 32 products
+              </span>
+              <button className="bg-[#aa8453] text-[18px] w-[250px] px-[20px] h-[50px] text-white py-2 rounded">
+                Load More Items
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

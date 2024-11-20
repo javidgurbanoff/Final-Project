@@ -106,18 +106,18 @@ const Header = () => {
             <div key={index} className="relative group">
               <Link
                 href={item.link}
-                className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
+                className="text-white hover:text-[#aa8453] cursor-pointer transition-all pt-[10px] pb-[10px] pl-[30px] pr-[30px] relative"
               >
                 {item.name}
               </Link>
               {item.subItems && (
-                <div className="hidden group-hover:block absolute left-0 mt-4 text-left w-[100%] h-[325px] bg-white ring-1 ring-black ring-opacity-5 z-10">
-                  <div className="py-1">
+                <div className="hidden group-hover:block absolute left-0 mt-2 text-left bg-white ring-1 ring-black ring-opacity-5 z-10">
+                  <div className="py-1 w-[200px]">
                     {item.subItems.map((subItem, subIndex) => (
                       <Link
                         key={subIndex}
                         href={subItem.link}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                       >
                         {subItem.name}
                       </Link>
