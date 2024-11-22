@@ -2,19 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Gilda+Display&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Gilda+Display&display=swap");
 
 body {
-  font-family: 'Barlow', sans-serif;
-   overflow-x: hidden;
-    
+  font-family: "Barlow", sans-serif;
+  overflow-x: hidden;
 }
 
 .font-gilda {
-  font-family: 'Gilda Display', serif;
+  font-family: "Gilda Display", serif;
 }
 
+@keyframes leftRight {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-12px);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+  75% {
+    transform: translateX(-12px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+.group:hover .group-hover\:animate-left-right {
+  animation: leftRight 1.5s ease-in-out;
+}
 
+.success-message {
+  color: green;
+  font-size: 20px;
+  font-weight: bold;
+}

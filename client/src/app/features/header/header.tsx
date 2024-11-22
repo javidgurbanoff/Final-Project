@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
-import { IoIosStarOutline } from "react-icons/io";
+import { BiStar } from "react-icons/bi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import BackToTopButton from "@/app/components/BackToTopButton/BackToTopButton";
 import CookieConsent from "@/app/components/CookieConsent/CookieConsent";
@@ -39,7 +39,7 @@ const Header = () => {
       name: "COLLECTION",
       link: "#",
       subItems: [
-        { name: "Collection 1", link: "#" },
+        { name: "Collection Left Sidebar", link: "/CollectionLeftSidebar" },
         { name: "Collection 2", link: "#" },
         { name: "Collection 2", link: "#" },
         { name: "Collection 2", link: "#" },
@@ -50,7 +50,7 @@ const Header = () => {
       name: "PRODUCTS",
       link: "#",
       subItems: [
-        { name: "Product 1", link: "#" },
+        { name: "Product", link: "/product" },
         { name: "Product 2", link: "#" },
       ],
     },
@@ -62,6 +62,7 @@ const Header = () => {
         { name: "About Us", link: "/about" },
         { name: "Contact Us", link: "/contact" },
         { name: "FAQs Page", link: "/faq" },
+        { name: "Account", link: "/account" },
         { name: "Store Direction Page", link: "#" },
         { name: "Store Locations Page", link: "#" },
         { name: "Testimonials Page", link: "#" },
@@ -138,7 +139,7 @@ const Header = () => {
             <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
           </Link>
           <div className="relative">
-            <IoIosStarOutline className="transition-all cursor-pointer w-[24px] h-[24px]" />
+            <BiStar className="transition-all cursor-pointer w-[24px] h-[24px]" />
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
               0
             </span>

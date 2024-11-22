@@ -44,7 +44,7 @@ export default function Login() {
       if (response.ok) {
         setMessage("Login successful!");
         localStorage.setItem("authToken", data.token);
-        window.location.href = "/dashboard";
+        window.location.href = "/profile";
       } else {
         setMessage(data.message || "Invalid email or password.");
       }

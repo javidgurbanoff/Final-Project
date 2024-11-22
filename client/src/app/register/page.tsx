@@ -23,6 +23,16 @@ export default function Register() {
       setMessage("All fields are required.");
       return;
     }
+    if (
+      password.length < 8 ||
+      !/[A-Z]/.test(password) ||
+      !/[0-9]/.test(password)
+    ) {
+      setMessage(
+        "Password must be at least 8 characters long, include one uppercase letter and one number."
+      );
+      return;
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -131,10 +141,11 @@ export default function Register() {
               pending
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-[#2b2b2b] hover:text-[#aa8453]"
-            } transition-all`}
+            } transition-all flex justify-center items-center`}
           >
-            {pending ? "Registering..." : "Register"}
+            {pending ? <span className="loader" /> : "Register"}
           </button>
+
           {message && <p className="text-red-500 mt-4">{message}</p>}
         </form>
       </div>

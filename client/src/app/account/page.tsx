@@ -7,7 +7,7 @@ import { GoDotFill } from "react-icons/go";
 import Link from "next/link";
 import Modal from "../components/Modal/Modal";
 import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
-export default function Login() {
+export default function Account() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {

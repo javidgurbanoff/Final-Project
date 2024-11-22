@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",                          // Ensures compatibility with Node.js
-    "module": "commonjs",                     // Required for Node.js
-    "lib": ["dom", "esnext"],                 // Keep `dom` if you're working with frontend code as well
+    "target": "ES6",                         
+    "module": "commonjs",                  
+    "lib": ["dom", "esnext"],                 
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": false,                          // Allow emitting compiled JavaScript files
+    "noEmit": false,                          
     "esModuleInterop": true,
-    "moduleResolution": "node",               // Use Node.js module resolution
+    "moduleResolution": "node",               
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -27,7 +27,9 @@
     "**/*.ts", 
     "**/*.tsx", 
     ".next/types/**/*.ts",
-    "server/**/*.ts"                          // Include your server TypeScript files
+    "server/**/*.ts"                          
   ],
   "exclude": ["node_modules"]
+
+  
 }
