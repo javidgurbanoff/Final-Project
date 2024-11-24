@@ -3,18 +3,9 @@ import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { IoMdPhotos } from "react-icons/io";
 
-const DealProductCard = ({ product }) => {
+const RelatedProductItem = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
   const stars = Array(5).fill(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <div
@@ -40,7 +31,7 @@ const DealProductCard = ({ product }) => {
             </div>
 
             <div className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer">
-              <IoMdPhotos onClick={handleOpenModal} className="text-xl" />
+              <IoMdPhotos className="text-xl" />
             </div>
           </div>
         )}
@@ -80,8 +71,8 @@ const DealProductCard = ({ product }) => {
   );
 };
 
-const DealProducts = () => {
-  const dealProducts = [
+const ProductRelated = () => {
+  const productRelated = [
     {
       id: 1,
       name: "Acamond Halo Stud Conse",
@@ -89,9 +80,9 @@ const DealProducts = () => {
       discount: "-64%",
       originalPrice: "$550.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/1_c2307dbf-d624-4bcd-b3de-99a7963f7496_360x.jpg?v=1694678001",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/3_360x.jpg?v=1694678220",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/1a_72f2474e-7e99-45e6-96e5-ddda5fc59906_360x.jpg?v=1694678001",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/3a_360x.jpg?v=1694678220",
       rating: 5,
     },
     {
@@ -101,9 +92,9 @@ const DealProducts = () => {
       discount: "-45%",
       originalPrice: "$380.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/5_9fbce650-263b-44ad-8387-d6c23f3ade43_360x.jpg?v=1694678021",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/7_d7204dd0-b555-40c6-a0db-7b659380a3af_360x.jpg?v=1694678092",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/5a_360x.jpg?v=1694678021",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/7a_360x.jpg?v=1694678092",
       rating: 4,
     },
     {
@@ -113,9 +104,9 @@ const DealProducts = () => {
       discount: "-68%",
       originalPrice: "$770.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/8_360x.jpg?v=1694678072",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/9_360x.jpg?v=1694678010",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/8a_360x.jpg?v=1694678072",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/9a_360x.jpg?v=1694678010",
       rating: 0,
     },
     {
@@ -125,23 +116,25 @@ const DealProducts = () => {
       discount: "-75%",
       originalPrice: "$945.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/15_360x.jpg?v=1694678110",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/16_360x.jpg?v=1694678119",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/15a_360x.jpg?v=1695803744",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/16a_360x.jpg?v=1694678119",
       rating: 0,
     },
   ];
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-[46px] text-center font-gilda mb-8">Deal Products</h2>
-      <div className="flex flex-wrap justify-center px-4 md:px-16 lg:px-32">
-        {dealProducts.map((product) => (
-          <DealProductCard key={product.id} product={product} />
+    <div className="flex flex-col items-center pt-[70px]">
+      <h2 className="text-[46px] text-center font-gilda mb-8">
+        Product Related
+      </h2>
+      <div className="flex justify-center px-4">
+        {productRelated.map((product) => (
+          <RelatedProductItem key={product.id} product={product} />
         ))}
       </div>
     </div>
   );
 };
 
-export default DealProducts;
+export default ProductRelated;

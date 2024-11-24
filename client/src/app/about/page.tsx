@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Footer from "../features/footer/footer";
 import { IoHomeOutline } from "react-icons/io5";

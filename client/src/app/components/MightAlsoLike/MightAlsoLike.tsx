@@ -3,22 +3,13 @@ import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { IoMdPhotos } from "react-icons/io";
 
-const DealProductCard = ({ product }) => {
+const MightAlsoLikeItem = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
   const stars = Array(5).fill(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <div
-      className="max-w-sm mx-4 mb-6"
+      className="max-w-sm mx-4 mb-6 "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -40,7 +31,7 @@ const DealProductCard = ({ product }) => {
             </div>
 
             <div className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer">
-              <IoMdPhotos onClick={handleOpenModal} className="text-xl" />
+              <IoMdPhotos className="text-xl" />
             </div>
           </div>
         )}
@@ -80,8 +71,8 @@ const DealProductCard = ({ product }) => {
   );
 };
 
-const DealProducts = () => {
-  const dealProducts = [
+const MightAlsoLike = () => {
+  const mightAlsoLike = [
     {
       id: 1,
       name: "Acamond Halo Stud Conse",
@@ -89,9 +80,9 @@ const DealProducts = () => {
       discount: "-64%",
       originalPrice: "$550.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/1_c2307dbf-d624-4bcd-b3de-99a7963f7496_360x.jpg?v=1694678001",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/13_360x.jpg?v=1694678199",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/1a_72f2474e-7e99-45e6-96e5-ddda5fc59906_360x.jpg?v=1694678001",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/13a_360x.jpg?v=1695803456",
       rating: 5,
     },
     {
@@ -101,9 +92,9 @@ const DealProducts = () => {
       discount: "-45%",
       originalPrice: "$380.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/5_9fbce650-263b-44ad-8387-d6c23f3ade43_360x.jpg?v=1694678021",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/11_360x.jpg?v=1694678136",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/5a_360x.jpg?v=1694678021",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/11a_360x.jpg?v=1694678136",
       rating: 4,
     },
     {
@@ -125,23 +116,73 @@ const DealProducts = () => {
       discount: "-75%",
       originalPrice: "$945.00",
       imageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/15_360x.jpg?v=1694678110",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/2_50dddb87-1edc-49f2-be89-a78c32ce0641_360x.jpg?v=1694678246",
       hoverImageUrl:
-        "https://vinova-furstore.myshopify.com/cdn/shop/products/15a_360x.jpg?v=1695803744",
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/2a_1dae4acc-3f60-44d2-a5cd-d85d36709d25_360x.jpg?v=1694678246",
+      rating: 0,
+    },
+    {
+      id: 5,
+      name: "Diamond Halo Stud Monte",
+      price: "$236",
+      discount: "-75%",
+      originalPrice: "$945.00",
+      imageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/28_360x.jpg?v=1694678229",
+      hoverImageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/28a_360x.jpg?v=1694678229",
+      rating: 0,
+    },
+    {
+      id: 6,
+      name: "Diamond Halo Stud Monte",
+      price: "$236",
+      discount: "-75%",
+      originalPrice: "$945.00",
+      imageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/30_360x.jpg?v=1694678309",
+      hoverImageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/30a_360x.jpg?v=1694678309",
+      rating: 0,
+    },
+    {
+      id: 7,
+      name: "Diamond Halo Stud Monte",
+      price: "$236",
+      discount: "-75%",
+      originalPrice: "$945.00",
+      imageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/22_540x.jpg?v=1694678128",
+      hoverImageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/22a_360x.jpg?v=1694678128",
+      rating: 0,
+    },
+    {
+      id: 8,
+      name: "Diamond Halo Stud Monte",
+      price: "$236",
+      discount: "-75%",
+      originalPrice: "$945.00",
+      imageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/6_2244894f-10a7-46ed-832c-b2c7e0f2ca12_360x.jpg?v=1694678102",
+      hoverImageUrl:
+        "https://vinova-furstore.myshopify.com/cdn/shop/products/6a_360x.jpg?v=1694678102",
       rating: 0,
     },
   ];
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-[46px] text-center font-gilda mb-8">Deal Products</h2>
-      <div className="flex flex-wrap justify-center px-4 md:px-16 lg:px-32">
-        {dealProducts.map((product) => (
-          <DealProductCard key={product.id} product={product} />
+    <div className="flex flex-col items-center pt-[70px]">
+      <h2 className="text-[46px] text-center font-gilda mb-8">
+        You Might Also Like
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+        {mightAlsoLike.map((product) => (
+          <MightAlsoLikeItem key={product.id} product={product} />
         ))}
       </div>
     </div>
   );
 };
 
-export default DealProducts;
+export default MightAlsoLike;

@@ -15,6 +15,10 @@ import { TbHelp } from "react-icons/tb";
 import { BsChatLeftDotsFill } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa";
 import { FaShippingFast } from "react-icons/fa";
+import ProductRelated from "../components/ProductRelated/ProductRelated";
+import MightAlsoLike from "../components/MightAlsoLike/MightAlsoLike";
+import RecentlyViewedProduct from "../components/RecentlyViewedProducts/RecentlyViewedProducts";
+import CookieConsent from "../components/CookieConsent/CookieConsent";
 
 export default function Product() {
   const [quantity, setQuantity] = useState(1);
@@ -33,6 +37,14 @@ export default function Product() {
       type: "image",
       src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15a_1120x.jpg?v=1695803744",
     },
+    {
+      type: "image",
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15c_1120x.jpg?v=1695803744",
+    },
+    {
+      type: "image",
+      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15d_1120x.jpg?v=1695803744",
+    },
   ];
   const slickTrack = [
     {
@@ -47,10 +59,7 @@ export default function Product() {
       type: "image",
       src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15a_150x.jpg?v=1695803744",
     },
-    {
-      type: "image",
-      src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15b_150x.jpg?v=1695803744",
-    },
+
     {
       type: "image",
       src: "https://vinova-furstore.myshopify.com/cdn/shop/products/15c_150x.jpg?v=1695803744",
@@ -83,6 +92,7 @@ export default function Product() {
       <NavbarWithSidebar />
       <BackToTopButton />
       <Modal />
+      <CookieConsent />
 
       <div className="px-4 lg:px-32">
         <div className="flex items-center text-[14px] py-[23px] space-x-2 mt-4 text-[#222]">
@@ -96,23 +106,24 @@ export default function Product() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12">
-          <div
-            className="
-          flex-row"
-          >
+          <div className="flex-row">
             <div className="flex-1 relative group">
-              {mediaItems[currentMediaIndex].type === "image" ? (
+              {mediaItems?.[currentMediaIndex]?.type === "image" ? (
                 <img
-                  src={mediaItems[currentMediaIndex].src}
+                  src={mediaItems[currentMediaIndex]?.src}
                   alt="Product Image"
                   className="w-[570px] h-[706px] object-cover"
                 />
-              ) : (
+              ) : mediaItems?.[currentMediaIndex]?.type === "video" ? (
                 <video
-                  src={mediaItems[currentMediaIndex].src}
+                  src={mediaItems[currentMediaIndex]?.src}
                   controls
                   className="w-[570px] h-[706px] object-cover"
                 />
+              ) : (
+                <div className="w-[570px] h-[706px] bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-500">No media available</span>
+                </div>
               )}
 
               <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -132,40 +143,70 @@ export default function Product() {
               </div>
             </div>
 
-            <div className=" relative group">
-              {slickTrack[currentMediaIndex].type === "image" ? (
-                <img
-                  src={slickTrack[currentMediaIndex].src}
-                  alt="Product Image"
-                  className="w-98px] h-[121px] object-cover"
-                />
-              ) : (
-                <video
-                  src={slickTrack[currentMediaIndex].src}
-                  controls
-                  className="w-[570px] h-[706px] object-cover"
-                />
-              )}
-
-              <div className="absolute top-1/2 left-0 right-0 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button
-                  onClick={goToPreviousMedia}
-                  className="text-white bg-[#aa8453] w-[60px] h-[60px] rounded-full flex items-center justify-center hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all"
+            <div className="flex gap-2 mt-4">
+              {slickTrack.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => setCurrentMediaIndex(index)}
+                  className={`border ${
+                    currentMediaIndex === index
+                      ? "border-[#aa8453]"
+                      : "border-gray-200"
+                  } rounded-md overflow-hidden cursor-pointer`}
                 >
-                  <RiArrowLeftSLine className="text-2xl" />
-                </button>
-
-                <button
-                  onClick={goToNextMedia}
-                  className="text-white bg-[#aa8453] w-[60px] h-[60px] rounded-full flex items-center justify-center hover:bg-[#2b2b2b] hover:text-[#aa8453] transition-all"
-                >
-                  <RiArrowRightSLine className="text-2xl" />
-                </button>
+                  <img
+                    src={item.src}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-[98px] h-[121px] object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className=" w-full h-[434px]">
+              <div className="mt-[60px] mb-[52px]">
+                <ul className="  flex">
+                  <li>Description</li>
+                  <li>Deliver Policy</li>
+                  <li>Shipping & Return</li>
+                  <li>Custom tab</li>
+                </ul>
               </div>
+              <p className="text-[#6b7280]">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+                penatibus et magnis dis parturient montes, nascetur ridicu lus
+                mus. Donec quam felis, ultri cies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+                fringilla vel, aliquet nec, vulputate eget, arcu. Lorem ipsum
+                dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                ligula eget dolor aenean massa.{" "}
+              </p>
+              <img
+                src="https://images.vinovathemes.com/prestashop_teemax/image_product_detail.png"
+                alt=""
+                className="pb-[30px] mt-[20px]"
+              />
+              <ul className="text-[#6b7280] text-[14px] pl-4">
+                <li className="before:content-['•'] before:text-black before:pr-2">
+                  Ribbed and double-stitched collar and armholes
+                </li>
+                <li className="before:content-['•'] before:text-black before:pr-2">
+                  High-density fabric for vivid print clarity
+                </li>
+                <li className="before:content-['•'] before:text-black before:pr-2">
+                  Machine-wash safe
+                </li>
+                <li className="before:content-['•'] before:text-black before:pr-2">
+                  Single right rear button flap pocket
+                </li>
+                <li className="before:content-['•'] before:text-black before:pr-2">
+                  Products are proudly printed in the United States
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 h-[848px] space-y-6">
             <div className="flex justify-between">
               <h1 className="text-2xl font-semibold text-gray-800">
                 Diamond Halo Stud Monte
@@ -240,7 +281,9 @@ export default function Product() {
               </div>
 
               <div className="flex items-center gap-2 hover:text-[#6b7280] cursor-pointer">
-                <TbHelp />
+                <Link href="/questioning">
+                  <TbHelp />
+                </Link>
                 <span className="text-[10px]">ASK A QUESTION</span>
               </div>
 
@@ -275,6 +318,82 @@ export default function Product() {
             </div>
           </div>
         </div>
+        <div className="mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="w-full h-auto items-center space-x-4 bg-gray-50 p-4 rounded-lg shadow-md">
+            <div className="flex">
+              <img
+                src="https://vinova-furstore.myshopify.com/cdn/shop/files/icon-1_200x.png?v=1695007028"
+                alt="Extra Shipping"
+                className=" object-contain"
+              />
+              <div>
+                <h4 className="text-lg font-semibold text-gray-800">
+                  Extra Shipping
+                </h4>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry lorem Ipsum.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full h-auto flex items-center space-x-4 bg-gray-50 p-4 rounded-lg shadow-md">
+            <img
+              src="https://vinova-furstore.myshopify.com/cdn/shop/files/icon-2_200x.png?v=1695007028"
+              alt="Payment Secured"
+              className=" object-contain"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">
+                Payment Secured
+              </h4>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry lorem Ipsum.
+              </p>
+            </div>
+          </div>
+
+          <div className="w-full h-auto flex items-center space-x-4 bg-gray-50 p-4 rounded-lg shadow-md">
+            <img
+              src="https://vinova-furstore.myshopify.com/cdn/shop/files/icon-3_200x.png?v=1695007028"
+              alt="Money Back Guarantee"
+              className=" object-contain"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-gray-800">
+                Money Back Guarantee
+              </h4>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry lorem Ipsum.
+              </p>
+            </div>
+          </div>
+        </div>
+        <ProductRelated />
+        <MightAlsoLike />
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className={`
+      bg-[#aa8453] 
+      w-[200px] 
+      h-[60px] 
+      text-white 
+      px-6 
+      py-2 
+      rounded 
+      mt-[40px] 
+      ? "opacity-50 cursor-not-allowed" : hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer"} 
+      mx-auto
+    `}
+          >
+            View More Items
+          </button>
+        </div>
+        <RecentlyViewedProduct />
       </div>
 
       <Footer />
