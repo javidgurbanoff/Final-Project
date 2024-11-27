@@ -125,17 +125,19 @@ export default function Faq() {
           </h3>
           <h3 className="font-extrabold mb-[27px]">WE'RE HERE TO HELP!</h3>
 
-          <button
-            type="submit"
-            className={`bg-[#aa8453] w-[200px] h-[60px] text-white text-[18px] font-barlow px-6 py-2 rounded-[4px] ${
-              pending
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-[#ffffff] border-[2px] hover:border-[#000] hover:text-[#000]"
-            } transition-all`}
-            disabled={pending}
-          >
-            {pending ? "Loading..." : "Contact Us Now"}
-          </button>
+          <Link href="/contact">
+            <button
+              type="submit"
+              className={`bg-[#aa8453] w-[200px] h-[60px] text-white text-[18px] font-barlow px-6 py-2 rounded-[4px] ${
+                pending
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-[#ffffff] border-[2px] hover:border-[#000] hover:text-[#000]"
+              } transition-all`}
+              disabled={pending}
+            >
+              {pending ? "Loading..." : "Contact Us Now"}
+            </button>
+          </Link>
         </div>
       </div>
       <Footer />

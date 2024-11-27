@@ -80,31 +80,30 @@ const LivingRoom: React.FC = () => {
                 key={index}
                 className="relative flex flex-col items-center mx-4 group"
               >
+                <div className="absolute top-2 right-2 w-10 h-10 flex items-center justify-center rounded-full text-[#848484] group-hover:text-[#aa8453] group-hover:bg-[#2b2b2b] transition-all cursor-pointer">
+                  <AiOutlineHeart />
+                </div>
                 <img
-                  className="w-[194px] h-[240px] object-cover transition-transform duration-[1500ms] ease-in-out transform hover:scale-105"
+                  className="w-[194px] h-[240px] object-cover transition-all"
                   src={item.imageURL}
                   alt={item.title}
                 />
-                <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
-                  <div className="flex space-x-4 mb-4">
-                    <AiOutlineHeart className="text-white text-xl cursor-pointer" />
-                    <AiOutlineShoppingCart className="text-white text-xl cursor-pointer" />
-                  </div>
-                  <button className="bg-[#222] text-[#aa8453] py-1 px-3 rounded">
-                    Quick Add
-                  </button>
-                  <div className="flex mt-2">
-                    {[...Array(5)].map((_, starIndex) => (
-                      <span key={starIndex}>
-                        {starIndex < Math.floor(item.rating) ? (
-                          <FaStar className="text-[#aa8453]" />
-                        ) : (
-                          <FaRegStar className="text-[#aa8453]" />
-                        )}
-                      </span>
-                    ))}
-                  </div>
+                <button className="mt-2 bg-[#222] text-[#aa8453] py-1 px-3 rounded opacity-0 group-hover:opacity-100 transition-all">
+                  Quick Add
+                </button>
+
+                <div className="flex mt-2">
+                  {[...Array(5)].map((_, starIndex) => (
+                    <span key={starIndex}>
+                      {starIndex < Math.floor(item.rating) ? (
+                        <FaStar className="text-[#aa8453]" />
+                      ) : (
+                        <FaRegStar className="text-[#aa8453]" />
+                      )}
+                    </span>
+                  ))}
                 </div>
+
                 <h3 className="text-[16px] mt-2">{item.title}</h3>
               </div>
             ))

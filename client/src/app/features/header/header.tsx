@@ -14,6 +14,17 @@ const Header = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [currency, setCurrency] = useState("USD");
+  const [language, setLanguage] = useState("ENGLISH");
+
+  const handleCurrencyChange = (newCurrency: string) => {
+    setCurrency(newCurrency);
+  };
+
+  const handleLanguageChange = (newLanguage: string) => {
+    setLanguage(newLanguage);
+  };
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -39,7 +50,7 @@ const Header = () => {
       name: "COLLECTION",
       link: "#",
       subItems: [
-        { name: "Collection Left Sidebar", link: "/CollectionLeftSidebar" },
+        { name: "Collection Left Sidebar", link: "/collection" },
         { name: "Collection 2", link: "#" },
         { name: "Collection 2", link: "#" },
         { name: "Collection 2", link: "#" },
@@ -139,13 +150,18 @@ const Header = () => {
             <GoPerson className="transition-all cursor-pointer w-[24px] h-[24px]" />
           </Link>
           <div className="relative">
-            <BiStar className="transition-all cursor-pointer w-[24px] h-[24px]" />
+            <Link href="/wishlist">
+              <BiStar className="transition-all cursor-pointer w-[24px] h-[24px]" />
+            </Link>
+
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
               0
             </span>
           </div>
           <div className="relative">
-            <MdOutlineShoppingCart className="transition-all cursor-pointer w-[24px] h-[24px]" />
+            <Link href="/purchase">
+              <MdOutlineShoppingCart className="transition-all cursor-pointer w-[24px] h-[24px]" />
+            </Link>
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center pt-[3px] justify-center">
               0
             </span>
@@ -221,7 +237,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/account"
+                href="/purchase"
                 className="hover:text-[#aa8453] transition-all"
               >
                 Checkout
@@ -229,11 +245,33 @@ const Header = () => {
             </li>
             <li className="pt-[30px] text-[14px] font-gilda">
               <span>CURRENCY</span>
-              <div className="text-[11px] font-barlow">USD</div>
+              <div className="text-[11px] font-barlow">
+                <select
+                  value={currency}
+                  onChange={(e) => handleCurrencyChange(e.target.value)}
+                  className="bg-transparent border-none text-gray-600"
+                >
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="AZN">AZN</option>
+                </select>
+              </div>
             </li>
             <li className="text-[14px] font-gilda">
               <span>LANGUAGE</span>
-              <div className="text-[11px] font-barlow">ENGLISH</div>
+              <div className="text-[11px] font-barlow">
+                <select
+                  value={language}
+                  onChange={(e) => handleLanguageChange(e.target.value)}
+                  className="bg-transparent border-none text-gray-700"
+                >
+                  <option value="ENGLISH">ENGLISH</option>
+                  <option value="SPANISH">SPANISH</option>
+                  <option value="FRENCH">FRENCH</option>
+                  <option value="GERMAN">GERMAN</option>
+                </select>
+              </div>
             </li>
           </ul>
         </div>

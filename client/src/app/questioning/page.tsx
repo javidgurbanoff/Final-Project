@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const questioning = () => {
+const Questioning = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [isMessageSent, setIsMessageSent] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -18,16 +18,37 @@ const questioning = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsMessageSent(true);
-    setMessage("");
-    setTimeout(() => setIsMessageSent(false), 3000);
-    handleCloseModal();
+    if (message.trim()) {
+      toast.success("Your question has been sent successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setMessage("");
+      handleCloseModal();
+    } else {
+      toast.error("Please enter a valid question!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
 
   return (
     <div className="">
       <div className="pl-3">
-        <button className="mt-4  h-[50px] text-[#000000] py-2 px-3 rounded-lg hover:bg-[#082e21] hover:text-[#ffffff] transition-all ">
+        <button className="mt-4 h-[50px] text-[#000000] py-2 px-3 rounded-lg hover:bg-[#082e21] hover:text-[#ffffff] transition-all">
           <Link href="/">Back To HomePage</Link>
         </button>
       </div>
@@ -74,11 +95,6 @@ const questioning = () => {
                   </button>
                 </div>
               </form>
-              {isMessageSent && (
-                <div className="mt-4 text-green-500 font-semibold">
-                  Your question has been sent successfully!
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -88,4 +104,4 @@ const questioning = () => {
   );
 };
 
-export default questioning;
+export default Questioning;

@@ -1,10 +1,4 @@
 import * as React from "react";
-import Accordion, { AccordionSlots } from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Fade from "@mui/material/Fade";
 
 export default function AccordionTransition() {
   const [expanded, setExpanded] = React.useState(false);

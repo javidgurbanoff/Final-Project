@@ -25,7 +25,7 @@ export default function About() {
       <BackToTopButton />
       <Modal />
 
-      <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px]">
+      <div className="flex-grow text-center pt-[90px] w-full flex flex-col items-center pb-[30px] px-4 sm:px-6 lg:px-8">
         <div className="pb-[90px]">
           <h1 className="text-[30px] text-[#222] font-gilda">ABOUT US</h1>
 

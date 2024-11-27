@@ -10,8 +10,11 @@ import Link from "next/link";
 import NavbarWithSidebar from "../components/NavbarWithSidebar/NavbarWithSidebar";
 import Modal from "../components/Modal/Modal";
 import BackToTopButton from "../components/BackToTopButton/BackToTopButton";
+import TagsAndDescription from "../components/TagsAndDescription/TagsAndDescription";
+import FeaturesGrid from "../components/FeaturesGrid/FeaturesGrid";
+import RecentlyViewedProduct from "../components/RecentlyViewedProducts/RecentlyViewedProducts";
 
-export default function CollectionLeftSidebar() {
+export default function collection() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -324,6 +327,9 @@ export default function CollectionLeftSidebar() {
           </div>
         </div>
       </div>
+      <TagsAndDescription />
+      <FeaturesGrid />
+      <RecentlyViewedProduct />
       <Footer />
     </div>
   );

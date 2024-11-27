@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { GoPerson } from "react-icons/go";
@@ -11,15 +9,17 @@ import Dropdown from "@/app/components/DropDown/DropDown";
 const NavbarWithSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Dropdown items for each menu
   const collectionItems = [
-    { name: "Collection 1", link: "#" },
+    {
+      name: "Collection Left Sidebar",
+      link: "/collection",
+    },
     { name: "Collection 2", link: "#" },
     { name: "Collection 3", link: "#" },
   ];
 
   const productItems = [
-    { name: "Product 1", link: "#" },
+    { name: "Product", link: "/product" },
     { name: "Product 2", link: "#" },
   ];
 
@@ -87,14 +87,19 @@ const NavbarWithSidebar = () => {
           </button>
 
           <div className="relative">
-            <BiStar className="w-[24px] h-[24px] cursor-pointer" />
+            <Link href="/wishlist">
+              <BiStar className="w-[24px] h-[24px] cursor-pointer" />
+            </Link>
+
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center justify-center">
               0
             </span>
           </div>
 
           <div className="relative">
-            <MdOutlineShoppingCart className="w-[24px] h-[24px] cursor-pointer" />
+            <Link href="/purchase">
+              <MdOutlineShoppingCart className="w-[24px] h-[24px] cursor-pointer" />
+            </Link>
             <span className="absolute top-0 right-0 translate-x-[35%] -translate-y-[35%] bg-[#aa8453] text-white rounded-full w-[16px] h-[16px] text-[10px] flex items-center justify-center">
               0
             </span>
@@ -131,7 +136,7 @@ const NavbarWithSidebar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/account" className="hover:text-[#aa8453]">
+              <Link href="/purchase" className="hover:text-[#aa8453]">
                 Checkout
               </Link>
             </li>
