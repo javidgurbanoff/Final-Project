@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { IoMdPhotos } from "react-icons/io";
+import { useWishlist } from "../../context/WishlistContext";
 
 const DealProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
   const stars = Array(5).fill(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addToWishlist } = useWishlist();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -35,12 +37,18 @@ const DealProductCard = ({ product }) => {
 
         {isHovered && (
           <div className="absolute top-5 right-5 flex gap-2">
-            <div className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer">
+            <div
+              className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer"
+              onClick={() => addToWishlist(product)}
+            >
               <FaHeart />
             </div>
 
-            <div className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer">
-              <IoMdPhotos onClick={handleOpenModal} className="text-xl" />
+            <div
+              className="w-10 h-10 flex items-center justify-center border border-[#ededed] rounded-full text-[#848484] hover:text-[#aa8453] hover:bg-[#2b2b2b] transition-all cursor-pointer"
+              onClick={handleOpenModal}
+            >
+              <IoMdPhotos className="text-xl" />
             </div>
           </div>
         )}
@@ -54,6 +62,7 @@ const DealProductCard = ({ product }) => {
           <div
             className="text-[#f9bf00] pl-1 flex"
             aria-label={`${product.rating} star rating`}
+            onClick={() => addToWishlist(product)}
           >
             {stars.map((_, index) => (
               <FaHeart
@@ -81,7 +90,7 @@ const DealProductCard = ({ product }) => {
 };
 
 const DealProducts = () => {
-  const dealProducts = [
+  const [dealProducts, setDealProducts] = useState([
     {
       id: 1,
       name: "Acamond Halo Stud Conse",
@@ -130,11 +139,82 @@ const DealProducts = () => {
         "https://vinova-furstore.myshopify.com/cdn/shop/products/15a_360x.jpg?v=1695803744",
       rating: 0,
     },
-  ];
+  ]);
+
+  const [newProduct, setNewProduct] = useState({
+    id: null,
+    name: "",
+    price: "",
+    discount: "",
+    originalPrice: "",
+    imageUrl: "",
+    hoverImageUrl: "",
+    rating: 0,
+  });
+
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    if (!newProduct.name || !newProduct.price || !newProduct.imageUrl) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    setDealProducts((prevProducts) => [
+      ...prevProducts,
+      { ...newProduct, id: prevProducts.length + 1 },
+    ]);
+    setNewProduct({
+      id: null,
+      name: "",
+      price: "",
+      discount: "",
+      originalPrice: "",
+      imageUrl: "",
+      hoverImageUrl: "",
+      rating: 0,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center">
       <h2 className="text-[46px] text-center font-gilda mb-8">Deal Products</h2>
+
+      <form onSubmit={handleAddProduct} className="mb-8">
+        <input
+          type="text"
+          placeholder="Product Name"
+          value={newProduct.name}
+          onChange={(e) =>
+            setNewProduct((prev) => ({ ...prev, name: e.target.value }))
+          }
+          className="border rounded p-2 mr-2"
+        />
+        <input
+          type="text"
+          placeholder="Price"
+          value={newProduct.price}
+          onChange={(e) =>
+            setNewProduct((prev) => ({ ...prev, price: e.target.value }))
+          }
+          className="border rounded p-2 mr-2"
+        />
+        <input
+          type="text"
+          placeholder="Image URL"
+          value={newProduct.imageUrl}
+          onChange={(e) =>
+            setNewProduct((prev) => ({ ...prev, imageUrl: e.target.value }))
+          }
+          className="border rounded p-2 mr-2"
+        />
+        <button
+          type="submit"
+          className="bg-[#2b2b2b] text-[#aa8453] px-4 py-2 rounded"
+        >
+          Add Product
+        </button>
+      </form>
+
       <div className="flex flex-wrap justify-center px-4 md:px-16 lg:px-32">
         {dealProducts.map((product) => (
           <DealProductCard key={product.id} product={product} />
